@@ -974,3 +974,993 @@ footer {
     }
 
 }
+
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+.about-page {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--black);
+}
+
+
+/* =========================
+   ABOUT HERO
+========================= */
+
+.about-hero {
+    min-height: 78vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 5vw;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.about-hero-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.about-hero h1 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(60px, 9vw, 120px);
+
+    line-height: 0.92;
+
+    letter-spacing: -0.075em;
+
+    margin: 70px 0 45px;
+}
+
+.about-hero h1 span {
+    color: var(--muted);
+}
+
+.about-lead {
+    max-width: 540px;
+
+    font-size: 19px;
+
+    line-height: 1.6;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   GENERAL SECTION
+========================= */
+
+.about-section {
+    padding: 150px 5vw;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.about-grid {
+    max-width: 1100px;
+
+    margin: 80px auto 0;
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    gap: 100px;
+
+    align-items: start;
+}
+
+.about-grid h2,
+.founders-intro h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(45px, 6vw, 78px);
+
+    line-height: 0.96;
+
+    letter-spacing: -0.07em;
+
+    margin: 0;
+}
+
+.about-grid h2 span,
+.founders-intro h2 span {
+    color: var(--muted);
+}
+
+.about-copy {
+    max-width: 470px;
+}
+
+.about-copy p {
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    color: var(--muted);
+
+    margin: 0 0 28px;
+}
+
+
+/* =========================
+   VISION
+========================= */
+
+.vision {
+    padding: 180px 5vw;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.vision-content {
+    max-width: 1100px;
+
+    margin: 80px auto 0;
+}
+
+.vision-content h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 8vw, 105px);
+
+    line-height: 0.94;
+
+    letter-spacing: -0.075em;
+
+    margin: 0 0 65px;
+}
+
+.vision-content h2 span {
+    color: var(--muted);
+}
+
+.vision-content p {
+    max-width: 600px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: var(--muted);
+
+    margin: 0 0 25px;
+}
+
+
+/* =========================
+   BUILDING
+========================= */
+
+.building-list {
+    max-width: 1000px;
+
+    margin: 80px auto 0;
+
+    border-top: 1px solid var(--border);
+}
+
+.building-item {
+    display: grid;
+
+    grid-template-columns: 70px 1fr;
+
+    gap: 30px;
+
+    padding: 35px 0;
+
+    border-bottom: 1px solid var(--border);
+
+    cursor: default;
+}
+
+.building-item > span {
+    font-size: 11px;
+
+    color: var(--muted);
+
+    padding-top: 5px;
+}
+
+.building-item h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 22px;
+
+    letter-spacing: -0.03em;
+
+    margin: 0 0 10px;
+}
+
+.building-item p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   FOUNDERS
+========================= */
+
+.founders {
+    padding: 150px 5vw;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.founders-intro {
+    max-width: 1100px;
+
+    margin: 75px auto 80px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 60px;
+}
+
+.founders-intro p {
+    max-width: 350px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+.founder-grid {
+    max-width: 1000px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.founder-card {
+    min-height: 280px;
+
+    padding: 30px;
+
+    border: 1px solid var(--border);
+
+    background: #eeeeE6;
+
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.founder-card:hover {
+    border-color: #bdbdb5;
+}
+
+.founder-number {
+    font-size: 10px;
+
+    color: var(--muted);
+
+    margin-bottom: 70px;
+}
+
+.founder-card h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 25px;
+
+    letter-spacing: -0.04em;
+
+    margin: 0 0 5px;
+}
+
+.founder-card > span {
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.1em;
+
+    color: var(--muted);
+}
+
+.founder-card p {
+    max-width: 350px;
+
+    margin-top: 25px;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   CLOSING
+========================= */
+
+.about-closing {
+    padding: 180px 24px;
+
+    text-align: center;
+}
+
+.about-closing > p {
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+
+    color: var(--muted);
+
+    margin-bottom: 30px;
+}
+
+.about-closing h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 8vw, 110px);
+
+    line-height: 0.94;
+
+    letter-spacing: -0.075em;
+
+    margin: 0;
+}
+
+.about-closing h2 span {
+    color: var(--muted);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .about-hero {
+        min-height: 70vh;
+
+        padding: 90px 20px;
+    }
+
+    .about-hero h1 {
+        font-size: 58px;
+
+        margin-top: 50px;
+    }
+
+    .about-lead {
+        font-size: 16px;
+    }
+
+    .about-section,
+    .vision,
+    .founders {
+        padding: 100px 20px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+        margin-top: 55px;
+    }
+
+    .vision-content {
+        margin-top: 55px;
+    }
+
+    .vision-content h2 {
+        font-size: 58px;
+
+        margin-bottom: 45px;
+    }
+
+    .building-list {
+        margin-top: 55px;
+    }
+
+    .building-item {
+        grid-template-columns: 40px 1fr;
+
+        gap: 15px;
+    }
+
+    .founders-intro {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        margin-top: 55px;
+
+        margin-bottom: 55px;
+
+        gap: 30px;
+    }
+
+    .founder-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .founder-card {
+        min-height: 250px;
+    }
+
+    .about-closing {
+        padding: 120px 20px;
+    }
+
+    .about-closing h2 {
+        font-size: 58px;
+    }
+
+}
+
+/* =========================================================
+   WHY ZIENTRA
+========================================================= */
+
+.why-zientra {
+    padding: 150px 5vw 170px;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.why-header {
+    max-width: 1100px;
+
+    margin: 75px auto 110px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 70px;
+}
+
+.why-header h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(48px, 6vw, 80px);
+
+    line-height: 0.95;
+
+    letter-spacing: -0.07em;
+
+    margin: 0;
+}
+
+.why-header h2 span {
+    color: var(--muted);
+}
+
+.why-header > p {
+    max-width: 340px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.65;
+}
+
+
+/* =========================
+   LIST
+========================= */
+
+.why-list {
+    max-width: 1100px;
+
+    margin: auto;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* =========================
+   ITEM
+========================= */
+
+.why-item {
+    display: grid;
+
+    grid-template-columns: 70px 1fr;
+
+    gap: 35px;
+
+    padding: 70px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.why-number {
+    font-size: 11px;
+
+    color: var(--muted);
+
+    padding-top: 8px;
+
+    letter-spacing: 0.05em;
+}
+
+.why-content {
+    max-width: 850px;
+}
+
+.why-content h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(30px, 4vw, 48px);
+
+    line-height: 1;
+
+    letter-spacing: -0.055em;
+
+    margin: 0 0 15px;
+}
+
+.why-content h4 {
+    font-size: 15px;
+
+    font-weight: 500;
+
+    color: var(--black);
+
+    margin: 0 0 30px;
+}
+
+.why-content > p {
+    max-width: 680px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin: 0 0 20px;
+}
+
+
+/* =========================
+   GOAL FLOW
+========================= */
+
+.goal-flow {
+    margin-top: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.goal-flow span {
+    padding: 9px 12px;
+
+    border: 1px solid var(--border);
+
+    background: #eeeeE6;
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+    border-radius: 3px;
+}
+
+.goal-flow span:nth-child(even) {
+    border: none;
+
+    background: transparent;
+
+    padding: 0;
+
+    color: #999990;
+}
+
+
+/* =========================
+   CONTEXT
+========================= */
+
+.context-tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 35px;
+}
+
+.context-tags span {
+    padding: 8px 11px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 3px;
+
+    font-size: 10px;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   WORK GRAPH
+========================= */
+
+.why-work-graph {
+    padding-top: 90px;
+
+    padding-bottom: 90px;
+}
+
+.work-graph {
+    max-width: 620px;
+
+    margin: 50px auto 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.graph-node {
+    width: min(100%, 320px);
+
+    padding: 13px 16px;
+
+    border: 1px solid #cfcfc6;
+
+    background: #eeeeE6;
+
+    border-radius: 4px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    color: var(--black);
+}
+
+.graph-line {
+    width: 1px;
+
+    height: 25px;
+
+    background: #c7c7be;
+}
+
+.graph-split {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+
+    margin-top: 0;
+}
+
+.graph-split > div {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.graph-split .graph-node {
+    width: 100%;
+}
+
+.graph-human {
+    border-color: #999990;
+
+    background: #e6e6dc;
+}
+
+.graph-final {
+    background: var(--black);
+
+    color: var(--bg);
+
+    border-color: var(--black);
+}
+
+
+/* =========================
+   GRAPH QUESTIONS
+========================= */
+
+.graph-questions {
+    margin-top: 45px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.graph-questions p {
+    margin: 0;
+
+    padding: 13px 15px;
+
+    border-left: 2px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   HUMAN LOOP
+========================= */
+
+.human-loop {
+    margin-top: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.human-loop span {
+    font-size: 11px;
+
+    color: var(--muted);
+}
+
+.human-loop span:nth-child(odd) {
+    padding: 10px 14px;
+
+    border: 1px solid var(--border);
+
+    background: #eeeeE6;
+
+    border-radius: 3px;
+
+    color: var(--black);
+}
+
+
+/* =========================
+   AGENTS
+========================= */
+
+.agent-grid {
+    margin-top: 40px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+
+    max-width: 650px;
+}
+
+.agent-grid > div {
+    padding: 20px;
+
+    border: 1px solid var(--border);
+
+    background: #eeeeE6;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    border-radius: 3px;
+}
+
+.agent-grid strong {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 14px;
+
+    letter-spacing: -0.02em;
+}
+
+.agent-grid span {
+    font-size: 11px;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   CLOSING
+========================= */
+
+.why-closing {
+    text-align: center;
+
+    padding: 150px 20px 20px;
+}
+
+.why-closing > p:first-child {
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+
+    color: var(--muted);
+
+    margin-bottom: 30px;
+}
+
+.why-closing h3 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(50px, 7vw, 90px);
+
+    line-height: 0.94;
+
+    letter-spacing: -0.07em;
+
+    margin: 0;
+}
+
+.why-closing h3 span {
+    color: var(--muted);
+}
+
+.why-closing h3 + p {
+    margin-top: 30px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .why-zientra {
+        padding: 100px 20px;
+    }
+
+    .why-header {
+        margin: 55px auto 70px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 35px;
+    }
+
+    .why-header h2 {
+        font-size: 54px;
+    }
+
+    .why-item {
+        grid-template-columns: 40px 1fr;
+
+        gap: 15px;
+
+        padding: 55px 0;
+    }
+
+    .why-content h3 {
+        font-size: 32px;
+    }
+
+    .why-content h4 {
+        line-height: 1.5;
+    }
+
+    .goal-flow {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .goal-flow span:nth-child(even) {
+        transform: rotate(90deg);
+
+        margin: 0 0 0 15px;
+    }
+
+    .graph-split {
+        gap: 10px;
+    }
+
+    .graph-node {
+        font-size: 10px;
+
+        padding: 11px 8px;
+    }
+
+    .graph-questions {
+        grid-template-columns: 1fr;
+    }
+
+    .human-loop {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .human-loop span:nth-child(even) {
+        margin-left: 15px;
+    }
+
+    .agent-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .why-closing {
+        padding-top: 110px;
+    }
+
+    .why-closing h3 {
+        font-size: 55px;
+    }
+
+}

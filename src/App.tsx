@@ -1,7 +1,8 @@
-import { FormEvent, useState } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import "./App.css";
 import Nav from "./components/nav";
+import { motion, type Variants } from "framer-motion";
 
 function App() {
     const [email, setEmail] = useState("");
@@ -19,85 +20,90 @@ function App() {
 
 
     // animation section
-    const fadeUp = {
-        hidden: {
-            opacity: 0,
-            y: 24
-        },
+    const fadeUp: Variants = {
+      hidden: {
+          opacity: 0,
+          y: 24
+      },
 
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.7,
-                ease: [0.22, 1, 0.36, 1]
-            }
-        }
-    };
+      visible: {
+          opacity: 1,
+          y: 0,
 
-
-    const heroContainer = {
-        hidden: {},
-
-        visible: {
-            transition: {
-                staggerChildren: 0.12
-            }
-        }
-    };
+          transition: {
+              duration: 0.7,
+              ease: [0.22, 1, 0.36, 1]
+          }
+      }
+  };
 
 
-    const heroItem = {
-        hidden: {
-            opacity: 0,
-            y: 20
-        },
+  const heroContainer: Variants = {
+      hidden: {},
 
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.7,
-                ease: [0.22, 1, 0.36, 1]
-            }
-        }
-    };
+      visible: {
+          transition: {
+              staggerChildren: 0.12
+          }
+      }
+  };
 
 
-    const sectionReveal = {
-        hidden: {
-            opacity: 0,
-            y: 45
-        },
+  const heroItem: Variants = {
+      hidden: {
+          opacity: 0,
+          y: 20
+      },
 
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1]
-            }
-        }
-    };
+      visible: {
+          opacity: 1,
+          y: 0,
+
+          transition: {
+              duration: 0.7,
+              ease: [0.22, 1, 0.36, 1]
+          }
+      }
+  };
 
 
-    const workspaceReveal = {
-        hidden: {
-            opacity: 0,
-            y: 50,
-            scale: 0.985
-        },
+  const sectionReveal: Variants = {
+      hidden: {
+          opacity: 0,
+          y: 45
+      },
 
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1]
-            }
-        }
-    };
+      visible: {
+          opacity: 1,
+          y: 0,
+
+          transition: {
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1]
+          }
+      }
+  };
+
+
+  const workspaceReveal: Variants = {
+      hidden: {
+          opacity: 0,
+          y: 50,
+          scale: 0.985
+      },
+
+      visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+
+          transition: {
+              duration: 1,
+              ease: [0.22, 1, 0.36, 1]
+          }
+      }
+  };
+
     // end of animation section
 
     return (
@@ -105,10 +111,6 @@ function App() {
 
             <Nav />
 
-
-            {/* =========================================
-                HERO
-            ========================================= */}
 
             <main>
 
@@ -124,8 +126,6 @@ function App() {
                         animate="visible"
                     >
 
-                        {/* EYEBROW */}
-
                         <motion.div
                             className="eyebrow"
                             variants={heroItem}
@@ -136,9 +136,6 @@ function App() {
                             THE COLLABORATIVE WORKSPACE
 
                         </motion.div>
-
-
-                        {/* HERO TITLE */}
 
                         <motion.h1
                             variants={heroItem}
@@ -235,8 +232,6 @@ function App() {
                         </motion.form>
 
 
-                        {/* WAITLIST NOTE */}
-
                         <motion.p
                             className="waitlist-note"
                             variants={heroItem}
@@ -247,9 +242,6 @@ function App() {
                         </motion.p>
 
                     </motion.div>
-
-
-                    {/* HERO AMBIENT GLOW */}
 
                     <motion.div
                         className="hero-glow"
@@ -266,11 +258,6 @@ function App() {
                     />
 
                 </section>
-
-
-                {/* =========================================
-                    PRODUCT
-                ========================================= */}
 
                 <motion.section
                     className="product"
@@ -328,9 +315,6 @@ function App() {
 
                     </div>
 
-
-                    {/* WORKSPACE */}
-
                     <motion.div
                         className="workspace"
 
@@ -378,9 +362,6 @@ function App() {
 
 
                         <div className="workspace-content">
-
-
-                            {/* SIDEBAR */}
 
                             <motion.aside
                                 className="workspace-sidebar"
@@ -489,8 +470,6 @@ function App() {
 
                             </motion.aside>
 
-
-                            {/* CODE */}
 
                             <motion.div
                                 className="code-panel"
@@ -776,10 +755,6 @@ function App() {
                 </motion.section>
 
 
-                {/* =========================================
-                    STATEMENT
-                ========================================= */}
-
                 <motion.section
                     className="statement"
                     id="about"
@@ -879,10 +854,6 @@ function App() {
                 </motion.section>
 
 
-                {/* =========================================
-                    FINAL CTA
-                ========================================= */}
-
                 <motion.section
                     className="final-cta"
 
@@ -970,10 +941,6 @@ function App() {
 
             </main>
 
-
-            {/* =========================================
-                FOOTER
-            ========================================= */}
 
             <footer>
 

@@ -38,13 +38,7 @@ const WhyZientra = () => {
             id="why-zientra"
 
             initial="hidden"
-
-            whileInView="visible"
-
-            viewport={{
-                once: true,
-                amount: 0.12
-            }}
+            animate="visible"
 
             variants={container}
         >
@@ -284,93 +278,6 @@ const WhyZientra = () => {
 
                         </p>
 
-
-                        {/* GRAPH */}
-
-                        <div className="work-graph">
-
-                            <div className="graph-node">
-                                Customer Requirement
-                            </div>
-
-                            <div className="graph-line" />
-
-                            <div className="graph-node">
-                                Product Decision
-                            </div>
-
-                            <div className="graph-line" />
-
-                            <div className="graph-node">
-                                Engineering Task
-                            </div>
-
-                            <div className="graph-line" />
-
-                            <div className="graph-node">
-                                Implementation Agent
-                            </div>
-
-                            <div className="graph-split">
-
-                                <div>
-
-                                    <div className="graph-line" />
-
-                                    <div className="graph-node">
-                                        Security Agent
-                                    </div>
-
-                                </div>
-
-
-                                <div>
-
-                                    <div className="graph-line" />
-
-                                    <div className="graph-node">
-                                        QA Agent
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-                            <div className="graph-line" />
-
-                            <div className="graph-node graph-human">
-                                Human Approval
-                            </div>
-
-                            <div className="graph-line" />
-
-                            <div className="graph-node graph-final">
-                                Deployment
-                            </div>
-
-                        </div>
-
-
-                        <div className="graph-questions">
-
-                            <p>
-                                Why was this code written?
-                            </p>
-
-                            <p>
-                                Which requirement caused it?
-                            </p>
-
-                            <p>
-                                Who approved it?
-                            </p>
-
-                            <p>
-                                Which agent reviewed it?
-                            </p>
-
-                        </div>
 
                     </div>
 

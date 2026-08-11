@@ -156,75 +156,7 @@ a {
 }
 
 
-/* =========================
-   NAVBAR RESPONSIVE
-========================= */
 
-@media (max-width: 900px) {
-
-    .navbar {
-        padding: 0 28px;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 20px;
-        margin-left: 0;
-    }
-
-    .nav-links a {
-        font-size: 13px;
-    }
-
-    .nav-cta {
-        padding: 9px 12px;
-        font-size: 12px;
-    }
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
-
-    .navbar {
-        height: 68px;
-        padding: 0 16px;
-    }
-
-    .logo {
-        font-size: 18px;
-        gap: 6px;
-    }
-
-    .logo img {
-        width: 18px;
-        height: 18px;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 12px;
-        margin-left: auto;
-        margin-right: 12px;
-    }
-
-    .nav-links a {
-        font-size: 11px;
-    }
-
-    .nav-cta {
-        padding: 7px 9px;
-        font-size: 10px;
-        gap: 4px;
-    }
-
-    .nav-cta span {
-        font-size: 11px;
-    }
-}
 
 .logo {
     font-family: "Manrope", sans-serif;

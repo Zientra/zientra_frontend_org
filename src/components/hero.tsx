@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion, type Variants } from "framer-motion";
 import { useState } from 'react';
 import type { FormEvent } from "react";

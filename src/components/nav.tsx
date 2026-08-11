@@ -4,8 +4,10 @@ const Nav = () => {
     return (
         <header className="navbar">
 
-                <a href="#" className="logo">
-                    zientra
+                
+                <a href="#" className="logo flex justify-around gap-2 items-center">
+                    <img src="./logo.png" className="h-5 w-5"></img>
+                    <b>zientra</b>
                 </a>
 
                 <nav className="nav-links">

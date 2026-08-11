@@ -1,0 +1,976 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap");
+
+:root {
+    --bg: #f5f5ee;
+    --black: #111111;
+    --muted: #74746d;
+    --border: #d9d9d0;
+    --panel: #eeeeE6;
+
+    font-family: "DM Sans", sans-serif;
+    color: var(--black);
+    background: var(--bg);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    height: 76px;
+
+    padding: 0 5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-family: "Manrope", sans-serif;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    letter-spacing: -0.06em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 34px;
+
+    margin-left: 80px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    color: var(--muted);
+
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--black);
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    padding: 10px 16px;
+
+    border: 1px solid var(--black);
+    border-radius: 4px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.nav-cta:hover {
+    background: var(--black);
+    color: var(--bg);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: calc(100vh - 76px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 100px 24px;
+}
+
+.hero-inner {
+    width: 100%;
+    max-width: 900px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+
+    color: var(--muted);
+
+    margin-bottom: 28px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #5b7d5a;
+}
+
+.hero h1 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(58px, 8vw, 112px);
+
+    line-height: 0.94;
+
+    letter-spacing: -0.075em;
+
+    margin: 0;
+}
+
+.hero h1 span,
+.product-intro h2 span,
+.statement-content h2 span,
+.final-cta h2 span {
+    color: var(--muted);
+}
+
+.hero-description {
+    max-width: 480px;
+
+    margin: 36px auto 34px;
+
+    font-size: 17px;
+    line-height: 1.6;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   WAITLIST
+========================= */
+
+.waitlist {
+    width: 100%;
+    max-width: 470px;
+
+    display: flex;
+
+    border: 1px solid var(--black);
+
+    background: var(--bg);
+
+    padding: 4px;
+
+    border-radius: 5px;
+}
+
+.waitlist input {
+    flex: 1;
+
+    min-width: 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    padding: 13px 14px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    color: var(--black);
+}
+
+.waitlist input::placeholder {
+    color: #999990;
+}
+
+.waitlist button {
+    border: none;
+
+    background: var(--black);
+    color: var(--bg);
+
+    padding: 0 18px;
+
+    border-radius: 3px;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    white-space: nowrap;
+}
+
+.waitlist button span {
+    font-size: 16px;
+}
+
+.waitlist-note {
+    margin-top: 14px;
+
+    font-size: 11px;
+
+    color: #999990;
+}
+
+
+/* =========================
+   PRODUCT
+========================= */
+
+.product {
+    padding: 150px 5vw 180px;
+
+    border-top: 1px solid var(--border);
+}
+
+.section-meta {
+    display: flex;
+    gap: 12px;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+
+    color: var(--muted);
+}
+
+.section-meta span {
+    color: var(--black);
+}
+
+.product-intro {
+    max-width: 850px;
+
+    margin: 55px auto 80px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    gap: 50px;
+}
+
+.product-intro h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(48px, 6vw, 82px);
+
+    line-height: 0.96;
+
+    letter-spacing: -0.07em;
+
+    margin: 0;
+}
+
+.product-intro p {
+    max-width: 320px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   WORKSPACE
+========================= */
+
+.workspace {
+    max-width: 1250px;
+
+    margin: auto;
+
+    border: 1px solid #cfcfc6;
+
+    background: #101010;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.08);
+
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+.workspace-top {
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 18px;
+
+    border-bottom: 1px solid #292929;
+
+    color: #aaa;
+    font-size: 11px;
+}
+
+.workspace-logo {
+    color: #f5f5ee;
+
+    font-weight: 600;
+
+    margin-right: 40px;
+}
+
+.workspace-room {
+    color: #ddd;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.tiny-dot {
+    width: 5px;
+    height: 5px;
+
+    background: #6b8769;
+
+    border-radius: 50%;
+}
+
+.workspace-status {
+    margin-left: auto;
+
+    color: #777;
+}
+
+.workspace-content {
+    min-height: 570px;
+
+    display: grid;
+
+    grid-template-columns: 180px 1fr 280px;
+}
+
+
+/* SIDEBAR */
+
+.workspace-sidebar {
+    border-right: 1px solid #292929;
+
+    padding: 22px 12px;
+
+    color: #888;
+
+    font-size: 11px;
+}
+
+.sidebar-label {
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+
+    color: #555;
+
+    margin-bottom: 12px;
+
+    padding-left: 8px;
+}
+
+.room {
+    padding: 9px 8px;
+
+    border-radius: 3px;
+
+    margin-bottom: 2px;
+}
+
+.room.active {
+    color: #eee;
+
+    background: #1d1d1d;
+}
+
+.room.active span {
+    color: #8ca789;
+}
+
+.members-label {
+    margin-top: 35px;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 8px;
+
+    color: #aaa;
+}
+
+.avatar {
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #292929;
+
+    color: #ccc;
+
+    font-size: 9px;
+}
+
+.avatar.agent {
+    color: #ddd;
+}
+
+
+/* CODE */
+
+.code-panel {
+    border-right: 1px solid #292929;
+
+    color: #bbb;
+
+    font-family: monospace;
+}
+
+.code-header {
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    border-bottom: 1px solid #292929;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 10px;
+
+    color: #777;
+}
+
+.code {
+    padding: 25px 20px;
+
+    font-size: 13px;
+
+    line-height: 2;
+}
+
+.line {
+    display: inline-block;
+
+    width: 35px;
+
+    color: #444;
+}
+
+.purple {
+    color: #c79ad9;
+}
+
+.blue {
+    color: #91b6d9;
+}
+
+.green {
+    color: #9abf8f;
+}
+
+.yellow {
+    color: #d7c38c;
+}
+
+
+/* CHAT */
+
+.workspace-chat {
+    display: flex;
+    flex-direction: column;
+
+    color: #aaa;
+}
+
+.chat-header {
+    height: 40px;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #292929;
+
+    color: #ddd;
+
+    font-size: 11px;
+}
+
+.chat-header span {
+    color: #666;
+}
+
+.messages {
+    flex: 1;
+
+    padding: 18px 16px;
+}
+
+.chat-message {
+    margin-bottom: 22px;
+}
+
+.chat-message strong {
+    font-size: 10px;
+
+    color: #ddd;
+}
+
+.chat-message p {
+    margin: 5px 0 0;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    color: #777;
+}
+
+.ai-message strong {
+    color: #aaa;
+}
+
+.chat-input {
+    margin: 12px;
+
+    padding: 10px;
+
+    border: 1px solid #292929;
+
+    color: #555;
+
+    font-size: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* =========================
+   STATEMENT
+========================= */
+
+.statement {
+    border-top: 1px solid var(--border);
+
+    padding: 150px 5vw;
+}
+
+.statement-content {
+    max-width: 1100px;
+
+    margin: 70px auto 0;
+}
+
+.statement-content h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 8vw, 110px);
+
+    line-height: 0.94;
+
+    letter-spacing: -0.075em;
+
+    margin: 0;
+}
+
+.statement-content p {
+    max-width: 430px;
+
+    margin-top: 45px;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final-cta {
+    border-top: 1px solid var(--border);
+
+    padding: 180px 24px;
+
+    text-align: center;
+}
+
+.final-cta > p {
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.15em;
+
+    color: var(--muted);
+
+    margin-bottom: 30px;
+}
+
+.final-cta h2 {
+    font-family: "Manrope", sans-serif;
+
+    font-size: clamp(55px, 8vw, 110px);
+
+    line-height: 0.94;
+
+    letter-spacing: -0.075em;
+
+    margin: 0 0 50px;
+}
+
+.final-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    background: var(--black);
+
+    color: var(--bg);
+
+    padding: 15px 21px;
+
+    border-radius: 4px;
+
+    font-size: 13px;
+
+    transition: transform 0.2s ease;
+}
+
+.final-button:hover {
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    border-top: 1px solid var(--border);
+
+    padding: 25px 5vw;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 11px;
+
+    color: var(--muted);
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a:hover {
+    color: var(--black);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .workspace-content {
+        grid-template-columns: 150px 1fr;
+    }
+
+    .workspace-chat {
+        display: none;
+    }
+
+    .product-intro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 0 20px;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .waitlist {
+        flex-direction: column;
+
+        border: none;
+
+        gap: 8px;
+    }
+
+    .waitlist input {
+        border: 1px solid var(--border);
+
+        padding: 14px;
+
+        border-radius: 4px;
+    }
+
+    .waitlist button {
+        min-height: 48px;
+
+        justify-content: center;
+    }
+
+    .product {
+        padding: 100px 20px;
+    }
+
+    .product-intro {
+        margin-top: 40px;
+    }
+
+    .workspace {
+        border-radius: 4px;
+    }
+
+    .workspace-content {
+        grid-template-columns: 1fr;
+    }
+
+    .workspace-sidebar {
+        display: none;
+    }
+
+    .code-panel {
+        border-right: none;
+    }
+
+    .statement {
+        padding: 100px 20px;
+    }
+
+    .final-cta {
+        padding: 120px 20px;
+    }
+
+    footer {
+        padding: 25px 20px;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
+
+}
+
+/* =========================================================
+   FRAMER MOTION SUPPORT
+========================================================= */
+
+/*
+    Keep transforms isolated from the layout.
+    Framer Motion handles the actual animation.
+*/
+
+
+/* =========================
+   HERO AMBIENT GLOW
+========================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/*
+    Very subtle atmospheric glow.
+
+    This is intentionally almost invisible.
+    The reference design is calm, not flashy.
+*/
+
+.hero-glow {
+
+    position: absolute;
+
+    width: 650px;
+    height: 300px;
+
+    left: 50%;
+    top: 58%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+
+            rgba(255, 224, 125, 0.13) 0%,
+
+            rgba(249, 194, 138, 0.08) 30%,
+
+            rgba(255, 255, 255, 0) 70%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* Make sure hero content sits above glow */
+
+.hero-inner {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   WAITLIST
+========================= */
+
+/*
+    Framer Motion controls scale.
+    Keep CSS transition only for
+    non-motion properties.
+*/
+
+.waitlist {
+    transform-origin: center;
+}
+
+
+/* =========================
+   WORKSPACE
+========================= */
+
+.workspace {
+    transform-origin: center bottom;
+
+    will-change: transform;
+}
+
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final-button {
+    will-change: transform;
+}
+
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+/*
+    Respect users who prefer reduced motion.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}

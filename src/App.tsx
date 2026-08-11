@@ -1,0 +1,1007 @@
+import { FormEvent, useState } from "react";
+import { motion } from "framer-motion";
+import "./App.css";
+import Nav from "./components/nav";
+
+function App() {
+    const [email, setEmail] = useState("");
+    const [submitted, setSubmitted] = useState(false);
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!email.trim()) return;
+
+        setSubmitted(true);
+        setEmail("");
+    };
+
+
+
+    // animation section
+    const fadeUp = {
+        hidden: {
+            opacity: 0,
+            y: 24
+        },
+
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+
+    const heroContainer = {
+        hidden: {},
+
+        visible: {
+            transition: {
+                staggerChildren: 0.12
+            }
+        }
+    };
+
+
+    const heroItem = {
+        hidden: {
+            opacity: 0,
+            y: 20
+        },
+
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.7,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+
+    const sectionReveal = {
+        hidden: {
+            opacity: 0,
+            y: 45
+        },
+
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+
+    const workspaceReveal = {
+        hidden: {
+            opacity: 0,
+            y: 50,
+            scale: 0.985
+        },
+
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 1,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+    // end of animation section
+
+    return (
+        <div className="app">
+
+            <Nav />
+
+
+            {/* =========================================
+                HERO
+            ========================================= */}
+
+            <main>
+
+                <section className="hero">
+
+                    <motion.div
+                        className="hero-inner"
+
+                        variants={heroContainer}
+
+                        initial="hidden"
+
+                        animate="visible"
+                    >
+
+                        {/* EYEBROW */}
+
+                        <motion.div
+                            className="eyebrow"
+                            variants={heroItem}
+                        >
+
+                            <span className="status-dot" />
+
+                            THE COLLABORATIVE WORKSPACE
+
+                        </motion.div>
+
+
+                        {/* HERO TITLE */}
+
+                        <motion.h1
+                            variants={heroItem}
+                        >
+
+                            Build together.
+
+                            <br />
+
+                            <span>
+                                With AI.
+                            </span>
+
+                        </motion.h1>
+
+
+                        {/* DESCRIPTION */}
+
+                        <motion.p
+                            className="hero-description"
+                            variants={heroItem}
+                        >
+
+                            A shared workspace where teams
+                            can code, communicate, and build
+                            alongside intelligent agents.
+
+                        </motion.p>
+
+
+                        {/* WAITLIST */}
+
+                        <motion.form
+                            className="waitlist"
+                            id="waitlist"
+
+                            variants={heroItem}
+
+                            onSubmit={handleSubmit}
+
+                            whileHover={{
+                                scale: 1.01
+                            }}
+
+                            transition={{
+                                duration: 0.25
+                            }}
+                        >
+
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                value={email}
+
+                                onChange={(e) =>
+                                    setEmail(e.target.value)
+                                }
+
+                                required
+                            />
+
+                            <motion.button
+                                type="submit"
+
+                                whileHover={{
+                                    y: -2
+                                }}
+
+                                whileTap={{
+                                    scale: 0.97
+                                }}
+                            >
+
+                                {submitted
+                                    ? "You're on the list"
+                                    : "Join waitlist"}
+
+                                {!submitted && (
+                                    <motion.span
+                                        initial={{
+                                            x: 0
+                                        }}
+
+                                        whileHover={{
+                                            x: 4
+                                        }}
+                                    >
+                                        →
+                                    </motion.span>
+                                )}
+
+                            </motion.button>
+
+                        </motion.form>
+
+
+                        {/* WAITLIST NOTE */}
+
+                        <motion.p
+                            className="waitlist-note"
+                            variants={heroItem}
+                        >
+
+                            Early access · No spam
+
+                        </motion.p>
+
+                    </motion.div>
+
+
+                    {/* HERO AMBIENT GLOW */}
+
+                    <motion.div
+                        className="hero-glow"
+                        animate={{
+                            opacity: [0.35, 0.55, 0.35],
+                            scale: [1, 1.04, 1]
+                        }}
+
+                        transition={{
+                            duration: 8,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                    />
+
+                </section>
+
+
+                {/* =========================================
+                    PRODUCT
+                ========================================= */}
+
+                <motion.section
+                    className="product"
+                    id="product"
+
+                    variants={sectionReveal}
+
+                    initial="hidden"
+
+                    whileInView="visible"
+
+                    viewport={{
+                        once: true,
+                        amount: 0.2
+                    }}
+                >
+
+                    <div className="section-meta">
+
+                        <span>
+                            01
+                        </span>
+
+                        PRODUCT
+
+                    </div>
+
+
+                    <div className="product-intro">
+
+                        <motion.h2
+                            variants={fadeUp}
+                        >
+
+                            One place to
+
+                            <br />
+
+                            <span>
+                                build.
+                            </span>
+
+                        </motion.h2>
+
+
+                        <motion.p
+                            variants={fadeUp}
+                        >
+
+                            Code, conversations, tasks and
+                            AI agents — working together inside
+                            the same room.
+
+                        </motion.p>
+
+                    </div>
+
+
+                    {/* WORKSPACE */}
+
+                    <motion.div
+                        className="workspace"
+
+                        variants={workspaceReveal}
+
+                        initial="hidden"
+
+                        whileInView="visible"
+
+                        viewport={{
+                            once: true,
+                            amount: 0.15
+                        }}
+
+                        whileHover={{
+                            y: -4
+                        }}
+
+                        transition={{
+                            duration: 0.3
+                        }}
+                    >
+
+                        {/* TOP */}
+
+                        <div className="workspace-top">
+
+                            <div className="workspace-logo">
+                                zientra
+                            </div>
+
+                            <div className="workspace-room">
+
+                                <span className="tiny-dot" />
+
+                                AI Team
+
+                            </div>
+
+                            <div className="workspace-status">
+                                3 members
+                            </div>
+
+                        </div>
+
+
+                        <div className="workspace-content">
+
+
+                            {/* SIDEBAR */}
+
+                            <motion.aside
+                                className="workspace-sidebar"
+
+                                initial={{
+                                    opacity: 0,
+                                    x: -15
+                                }}
+
+                                whileInView={{
+                                    opacity: 1,
+                                    x: 0
+                                }}
+
+                                viewport={{
+                                    once: true
+                                }}
+
+                                transition={{
+                                    delay: 0.25,
+                                    duration: 0.5
+                                }}
+                            >
+
+                                <div className="sidebar-label">
+                                    ROOMS
+                                </div>
+
+
+                                <motion.div
+                                    className="room active"
+
+                                    initial={{
+                                        opacity: 0,
+                                        x: -10
+                                    }}
+
+                                    whileInView={{
+                                        opacity: 1,
+                                        x: 0
+                                    }}
+
+                                    viewport={{
+                                        once: true
+                                    }}
+
+                                    transition={{
+                                        delay: 0.35
+                                    }}
+                                >
+
+                                    <span>
+                                        ●
+                                    </span>
+
+                                    AI Team
+
+                                </motion.div>
+
+
+                                <div className="room">
+                                    Backend
+                                </div>
+
+                                <div className="room">
+                                    Research
+                                </div>
+
+
+                                <div className="sidebar-label members-label">
+                                    MEMBERS
+                                </div>
+
+
+                                <div className="member">
+
+                                    <div className="avatar">
+                                        S
+                                    </div>
+
+                                    Sahil
+
+                                </div>
+
+
+                                <div className="member">
+
+                                    <div className="avatar">
+                                        A
+                                    </div>
+
+                                    Alice
+
+                                </div>
+
+
+                                <div className="member">
+
+                                    <div className="avatar agent">
+                                        ✦
+                                    </div>
+
+                                    Coding Agent
+
+                                </div>
+
+                            </motion.aside>
+
+
+                            {/* CODE */}
+
+                            <motion.div
+                                className="code-panel"
+
+                                initial={{
+                                    opacity: 0
+                                }}
+
+                                whileInView={{
+                                    opacity: 1
+                                }}
+
+                                viewport={{
+                                    once: true
+                                }}
+
+                                transition={{
+                                    delay: 0.35,
+                                    duration: 0.7
+                                }}
+                            >
+
+                                <div className="code-header">
+
+                                    <span>
+                                        main.js
+                                    </span>
+
+                                    <span>
+                                        JavaScript
+                                    </span>
+
+                                </div>
+
+
+                                <div className="code">
+
+                                    <div>
+                                        <span className="line">
+                                            01
+                                        </span>
+
+                                        <span className="purple">
+                                            const
+                                        </span>{" "}
+
+                                        <span className="blue">
+                                            team
+                                        </span>{" "}
+
+                                        ={" "}
+
+                                        <span className="green">
+                                            "zientra"
+                                        </span>
+
+                                        ;
+                                    </div>
+
+
+                                    <div>
+
+                                        <span className="line">
+                                            02
+                                        </span>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <span className="line">
+                                            03
+                                        </span>
+
+                                        <span className="purple">
+                                            function
+                                        </span>{" "}
+
+                                        <span className="yellow">
+                                            build
+                                        </span>
+
+                                        () {"{"}
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <span className="line">
+                                            04
+                                        </span>
+
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <span className="purple">
+                                            return
+                                        </span>{" "}
+
+                                        <span className="green">
+                                            "together"
+                                        </span>
+
+                                        ;
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <span className="line">
+                                            05
+                                        </span>
+
+                                        {"}"}
+
+                                    </div>
+
+                                </div>
+
+                            </motion.div>
+
+
+                            {/* CHAT */}
+
+                            <motion.aside
+                                className="workspace-chat"
+
+                                initial={{
+                                    opacity: 0,
+                                    x: 15
+                                }}
+
+                                whileInView={{
+                                    opacity: 1,
+                                    x: 0
+                                }}
+
+                                viewport={{
+                                    once: true
+                                }}
+
+                                transition={{
+                                    delay: 0.45,
+                                    duration: 0.6
+                                }}
+                            >
+
+                                <div className="chat-header">
+
+                                    <div>
+                                        AI Team
+                                    </div>
+
+                                    <span>
+                                        3
+                                    </span>
+
+                                </div>
+
+
+                                <div className="messages">
+
+                                    <motion.div
+                                        className="chat-message"
+
+                                        initial={{
+                                            opacity: 0,
+                                            y: 10
+                                        }}
+
+                                        whileInView={{
+                                            opacity: 1,
+                                            y: 0
+                                        }}
+
+                                        viewport={{
+                                            once: true
+                                        }}
+
+                                        transition={{
+                                            delay: 0.6
+                                        }}
+                                    >
+
+                                        <strong>
+                                            Alice
+                                        </strong>
+
+                                        <p>
+                                            Should we move this
+                                            into utils?
+                                        </p>
+
+                                    </motion.div>
+
+
+                                    <motion.div
+                                        className="chat-message"
+
+                                        initial={{
+                                            opacity: 0,
+                                            y: 10
+                                        }}
+
+                                        whileInView={{
+                                            opacity: 1,
+                                            y: 0
+                                        }}
+
+                                        viewport={{
+                                            once: true
+                                        }}
+
+                                        transition={{
+                                            delay: 0.75
+                                        }}
+                                    >
+
+                                        <strong>
+                                            Sahil
+                                        </strong>
+
+                                        <p>
+                                            Yeah, I'll refactor it.
+                                        </p>
+
+                                    </motion.div>
+
+
+                                    <motion.div
+                                        className="chat-message ai-message"
+
+                                        initial={{
+                                            opacity: 0,
+                                            y: 10
+                                        }}
+
+                                        whileInView={{
+                                            opacity: 1,
+                                            y: 0
+                                        }}
+
+                                        viewport={{
+                                            once: true
+                                        }}
+
+                                        transition={{
+                                            delay: 0.9
+                                        }}
+                                    >
+
+                                        <strong>
+                                            ✦ Coding Agent
+                                        </strong>
+
+                                        <p>
+                                            I found an opportunity
+                                            to simplify this function.
+                                        </p>
+
+                                    </motion.div>
+
+                                </div>
+
+
+                                <div className="chat-input">
+                                    Message...
+
+                                    <span>
+                                        →
+                                    </span>
+
+                                </div>
+
+                            </motion.aside>
+
+                        </div>
+
+                    </motion.div>
+
+                </motion.section>
+
+
+                {/* =========================================
+                    STATEMENT
+                ========================================= */}
+
+                <motion.section
+                    className="statement"
+                    id="about"
+
+                    initial={{
+                        opacity: 0
+                    }}
+
+                    whileInView={{
+                        opacity: 1
+                    }}
+
+                    viewport={{
+                        once: true,
+                        amount: 0.25
+                    }}
+
+                    transition={{
+                        duration: 0.8
+                    }}
+                >
+
+                    <div className="section-meta">
+
+                        <span>
+                            02
+                        </span>
+
+                        THE IDEA
+
+                    </div>
+
+
+                    <div className="statement-content">
+
+                        <motion.h2
+                            initial={{
+                                opacity: 0,
+                                y: 35
+                            }}
+
+                            whileInView={{
+                                opacity: 1,
+                                y: 0
+                            }}
+
+                            viewport={{
+                                once: true
+                            }}
+
+                            transition={{
+                                duration: 0.8,
+                                ease: [0.22, 1, 0.36, 1]
+                            }}
+                        >
+
+                            AI shouldn't be
+
+                            <br />
+
+                            <span>
+                                another tab.
+                            </span>
+
+                        </motion.h2>
+
+
+                        <motion.p
+                            initial={{
+                                opacity: 0,
+                                y: 20
+                            }}
+
+                            whileInView={{
+                                opacity: 1,
+                                y: 0
+                            }}
+
+                            viewport={{
+                                once: true
+                            }}
+
+                            transition={{
+                                delay: 0.15,
+                                duration: 0.7
+                            }}
+                        >
+
+                            Zientra brings AI into the same
+                            environment where your team already
+                            works.
+
+                        </motion.p>
+
+                    </div>
+
+                </motion.section>
+
+
+                {/* =========================================
+                    FINAL CTA
+                ========================================= */}
+
+                <motion.section
+                    className="final-cta"
+
+                    initial={{
+                        opacity: 0
+                    }}
+
+                    whileInView={{
+                        opacity: 1
+                    }}
+
+                    viewport={{
+                        once: true,
+                        amount: 0.25
+                    }}
+
+                    transition={{
+                        duration: 0.8
+                    }}
+                >
+
+                    <p>
+                        READY TO BUILD?
+                    </p>
+
+
+                    <motion.h2
+                        initial={{
+                            opacity: 0,
+                            y: 35
+                        }}
+
+                        whileInView={{
+                            opacity: 1,
+                            y: 0
+                        }}
+
+                        viewport={{
+                            once: true
+                        }}
+
+                        transition={{
+                            duration: 0.8,
+                            ease: [0.22, 1, 0.36, 1]
+                        }}
+                    >
+
+                        Build something
+
+                        <br />
+
+                        <span>
+                            together.
+                        </span>
+
+                    </motion.h2>
+
+
+                    <motion.a
+                        href="#waitlist"
+                        className="final-button"
+
+                        whileHover={{
+                            y: -3
+                        }}
+
+                        whileTap={{
+                            scale: 0.97
+                        }}
+                    >
+
+                        Join the waitlist
+
+                        <motion.span
+                            whileHover={{
+                                x: 5
+                            }}
+                        >
+                            →
+                        </motion.span>
+
+                    </motion.a>
+
+                </motion.section>
+
+            </main>
+
+
+            {/* =========================================
+                FOOTER
+            ========================================= */}
+
+            <footer>
+
+                <div>
+                    © 2026 Zientra
+                </div>
+
+
+                <div className="footer-links">
+
+                    <a href="#">
+                        GitHub
+                    </a>
+
+                    <a href="#">
+                        X
+                    </a>
+
+                    <a href="#">
+                        Contact
+                    </a>
+
+                </div>
+
+            </footer>
+
+        </div>
+    );
+}
+
+export default App;

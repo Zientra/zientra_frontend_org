@@ -1,5 +1,3 @@
-import { useState } from "react";
-import type { FormEvent } from "react";
 import "./App.css";
 import Nav from "./components/nav";
 import { motion, type Variants } from "framer-motion";

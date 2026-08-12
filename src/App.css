@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap");
 
+
+/* =========================================================
+GLOBAL
+========================================================= */
+
 :root {
     --bg: #f5f5ee;
     --black: #111111;
@@ -34,13 +39,9 @@ a {
 }
 
 
-/* =========================
-   NAVBAR
-========================= */
-
-/* =========================
-   NAVBAR
-========================= */
+/* =========================================================
+NAVBAR
+========================================================= */
 
 .navbar {
     width: 100%;
@@ -61,9 +62,9 @@ a {
 }
 
 
-/* =========================
-   LOGO
-========================= */
+/* =========================================================
+LOGO
+========================================================= */
 
 .logo {
     display: flex;
@@ -88,9 +89,9 @@ a {
 }
 
 
-/* =========================
-   LINKS
-========================= */
+/* =========================================================
+LINKS
+========================================================= */
 
 .nav-links {
     display: flex;
@@ -114,9 +115,9 @@ a {
 }
 
 
-/* =========================
-   CTA
-========================= */
+/* =========================================================
+CTA
+========================================================= */
 
 .nav-cta {
     display: flex;
@@ -156,82 +157,9 @@ a {
 }
 
 
-
-
-.logo {
-    font-family: "Manrope", sans-serif;
-
-    font-size: 21px;
-    font-weight: 700;
-
-    letter-spacing: -0.06em;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.logo img {
-    width: 20px;
-    height: 20px;
-
-    object-fit: contain;
-}
-
-.nav-links {
-    display: flex;
-    gap: 34px;
-
-    margin-left: 80px;
-}
-
-.nav-links a {
-    font-size: 14px;
-    color: var(--muted);
-
-    transition: color 0.2s ease;
-}
-
-.nav-links a:hover {
-    color: var(--black);
-}
-
-.nav-cta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    font-size: 14px;
-    font-weight: 500;
-
-    padding: 10px 16px;
-
-    border: 1px solid var(--black);
-    border-radius: 4px;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.nav-cta:hover {
-    background: var(--black);
-    color: var(--bg);
-}
-
-.nav-cta:hover span {
-    transform: translate(2px, -2px);
-}
-
-.nav-cta span {
-    transition: transform 0.2s ease;
-}
-
-
-/* =========================
-   TABLET
-========================= */
+/* =========================================================
+TABLET
+========================================================= */
 
 @media (max-width: 800px) {
 
@@ -243,25 +171,22 @@ a {
         gap: 22px;
         margin-left: 0;
     }
-
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* =========================================================
+MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
     .navbar {
         height: 68px;
-
         padding: 0 18px;
     }
 
     .logo {
         font-size: 19px;
-
         gap: 7px;
     }
 
@@ -270,13 +195,9 @@ a {
         height: 19px;
     }
 
-    /* Hide navigation links */
-
     .nav-links {
         display: none;
     }
-
-    /* Keep CTA visible */
 
     .nav-cta {
         padding: 9px 12px;
@@ -289,13 +210,12 @@ a {
     .nav-cta span {
         font-size: 13px;
     }
-
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* =========================================================
+HERO
+========================================================= */
 
 .hero {
     min-height: calc(100vh - 76px);
@@ -305,6 +225,9 @@ a {
     align-items: center;
 
     padding: 100px 24px;
+
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-inner {
@@ -316,11 +239,15 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    position: relative;
+    z-index: 2;
 }
 
 .eyebrow {
     display: flex;
     align-items: center;
+
     gap: 9px;
 
     font-size: 11px;
@@ -373,9 +300,40 @@ a {
 }
 
 
-/* =========================
-   WAITLIST
-========================= */
+/* =========================================================
+HERO AMBIENT GLOW
+========================================================= */
+
+.hero-glow {
+    position: absolute;
+
+    width: 650px;
+    height: 300px;
+
+    left: 50%;
+    top: 58%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255, 224, 125, 0.13) 0%,
+            rgba(249, 194, 138, 0.08) 30%,
+            rgba(255, 255, 255, 0) 70%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+WAITLIST
+========================================================= */
 
 .waitlist {
     width: 100%;
@@ -390,6 +348,8 @@ a {
     padding: 4px;
 
     border-radius: 5px;
+
+    transform-origin: center;
 }
 
 .waitlist input {
@@ -432,6 +392,7 @@ a {
 
     display: flex;
     align-items: center;
+
     gap: 12px;
 
     white-space: nowrap;
@@ -450,9 +411,9 @@ a {
 }
 
 
-/* =========================
-   PRODUCT
-========================= */
+/* =========================================================
+PRODUCT
+========================================================= */
 
 .product {
     padding: 150px 5vw 180px;
@@ -462,6 +423,7 @@ a {
 
 .section-meta {
     display: flex;
+
     gap: 12px;
 
     font-size: 11px;
@@ -482,6 +444,7 @@ a {
     margin: 55px auto 80px;
 
     display: flex;
+
     justify-content: space-between;
     align-items: flex-end;
 
@@ -512,9 +475,9 @@ a {
 }
 
 
-/* =========================
-   WORKSPACE
-========================= */
+/* =========================================================
+WORKSPACE
+========================================================= */
 
 .workspace {
     max-width: 1250px;
@@ -531,6 +494,10 @@ a {
     border-radius: 8px;
 
     overflow: hidden;
+
+    transform-origin: center bottom;
+
+    will-change: transform;
 }
 
 .workspace-top {
@@ -544,6 +511,7 @@ a {
     border-bottom: 1px solid #292929;
 
     color: #aaa;
+
     font-size: 11px;
 }
 
@@ -560,6 +528,7 @@ a {
 
     display: flex;
     align-items: center;
+
     gap: 7px;
 }
 
@@ -587,7 +556,9 @@ a {
 }
 
 
-/* SIDEBAR */
+/* =========================================================
+WORKSPACE SIDEBAR
+========================================================= */
 
 .workspace-sidebar {
     border-right: 1px solid #292929;
@@ -666,7 +637,9 @@ a {
 }
 
 
-/* CODE */
+/* =========================================================
+CODE
+========================================================= */
 
 .code-panel {
     border-right: 1px solid #292929;
@@ -727,10 +700,13 @@ a {
 }
 
 
-/* CHAT */
+/* =========================================================
+CHAT
+========================================================= */
 
 .workspace-chat {
     display: flex;
+
     flex-direction: column;
 
     color: #aaa;
@@ -802,9 +778,9 @@ a {
 }
 
 
-/* =========================
-   STATEMENT
-========================= */
+/* =========================================================
+STATEMENT
+========================================================= */
 
 .statement {
     border-top: 1px solid var(--border);
@@ -843,9 +819,9 @@ a {
 }
 
 
-/* =========================
-   FINAL CTA
-========================= */
+/* =========================================================
+FINAL CTA
+========================================================= */
 
 .final-cta {
     border-top: 1px solid var(--border);
@@ -897,6 +873,8 @@ a {
     font-size: 13px;
 
     transition: transform 0.2s ease;
+
+    will-change: transform;
 }
 
 .final-button:hover {
@@ -904,9 +882,9 @@ a {
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* =========================================================
+FOOTER
+========================================================= */
 
 footer {
     border-top: 1px solid var(--border);
@@ -914,6 +892,7 @@ footer {
     padding: 25px 5vw;
 
     display: flex;
+
     justify-content: space-between;
 
     font-size: 11px;
@@ -923,6 +902,7 @@ footer {
 
 .footer-links {
     display: flex;
+
     gap: 25px;
 }
 
@@ -931,9 +911,9 @@ footer {
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =========================================================
+GENERAL RESPONSIVE
+========================================================= */
 
 @media (max-width: 900px) {
 
@@ -951,11 +931,10 @@ footer {
 
     .product-intro {
         flex-direction: column;
+
         align-items: flex-start;
     }
-
 }
-
 
 @media (max-width: 600px) {
 
@@ -970,6 +949,7 @@ footer {
         justify-content: space-between;
 
         position: relative;
+
         z-index: 1000;
 
         visibility: visible;
@@ -980,6 +960,7 @@ footer {
 
     .logo {
         display: flex !important;
+
         align-items: center;
 
         font-size: 19px;
@@ -1005,18 +986,13 @@ footer {
         display: block;
     }
 
-
-    /* Hide only the navigation links */
-
     .nav-links {
         display: none !important;
     }
 
-
-    /* Keep waitlist button visible */
-
     .nav-cta {
         display: flex !important;
+
         align-items: center;
         justify-content: center;
 
@@ -1029,9 +1005,11 @@ footer {
         color: var(--black);
 
         border: 1px solid var(--black);
+
         border-radius: 4px;
 
         visibility: visible;
+
         opacity: 1;
 
         white-space: nowrap;
@@ -1042,156 +1020,31 @@ footer {
 
         font-size: 13px;
     }
-
-}
-
-/* =========================================================
-   FRAMER MOTION SUPPORT
-========================================================= */
-
-/*
-    Keep transforms isolated from the layout.
-    Framer Motion handles the actual animation.
-*/
-
-
-/* =========================
-   HERO AMBIENT GLOW
-========================= */
-
-.hero {
-    position: relative;
-    overflow: hidden;
-}
-
-
-/*
-    Very subtle atmospheric glow.
-
-    This is intentionally almost invisible.
-    The reference design is calm, not flashy.
-*/
-
-.hero-glow {
-
-    position: absolute;
-
-    width: 650px;
-    height: 300px;
-
-    left: 50%;
-    top: 58%;
-
-    transform: translate(-50%, -50%);
-
-    background:
-        radial-gradient(
-            ellipse,
-
-            rgba(255, 224, 125, 0.13) 0%,
-
-            rgba(249, 194, 138, 0.08) 30%,
-
-            rgba(255, 255, 255, 0) 70%
-        );
-
-    filter: blur(25px);
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-
-/* Make sure hero content sits above glow */
-
-.hero-inner {
-    position: relative;
-
-    z-index: 2;
-}
-
-
-/* =========================
-   WAITLIST
-========================= */
-
-/*
-    Framer Motion controls scale.
-    Keep CSS transition only for
-    non-motion properties.
-*/
-
-.waitlist {
-    transform-origin: center;
-}
-
-
-/* =========================
-   WORKSPACE
-========================= */
-
-.workspace {
-    transform-origin: center bottom;
-
-    will-change: transform;
-}
-
-
-/* =========================
-   FINAL CTA
-========================= */
-
-.final-button {
-    will-change: transform;
-}
-
-
-/* =========================
-   ACCESSIBILITY
-========================= */
-
-/*
-    Respect users who prefer reduced motion.
-*/
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        scroll-behavior: auto !important;
-
-        animation-duration: 0.01ms !important;
-
-        animation-iteration-count: 1 !important;
-
-        transition-duration: 0.01ms !important;
-    }
-
 }
 
 
 /* =========================================================
-   ABOUT PAGE
+ABOUT PAGE
 ========================================================= */
 
 .about-page {
     min-height: 100vh;
+
     background: var(--bg);
+
     color: var(--black);
 }
 
 
-/* =========================
-   ABOUT HERO
-========================= */
+/* =========================================================
+ABOUT HERO
+========================================================= */
 
 .about-hero {
     min-height: 78vh;
 
     display: flex;
+
     align-items: center;
 
     padding: 120px 5vw;
@@ -1201,7 +1054,9 @@ footer {
 
 .about-hero-inner {
     width: 100%;
+
     max-width: 1200px;
+
     margin: auto;
 }
 
@@ -1232,9 +1087,9 @@ footer {
 }
 
 
-/* =========================
-   GENERAL SECTION
-========================= */
+/* =========================================================
+GENERAL SECTION
+========================================================= */
 
 .about-section {
     padding: 150px 5vw;
@@ -1289,9 +1144,9 @@ footer {
 }
 
 
-/* =========================
-   VISION
-========================= */
+/* =========================================================
+VISION
+========================================================= */
 
 .vision {
     padding: 180px 5vw;
@@ -1334,9 +1189,9 @@ footer {
 }
 
 
-/* =========================
-   BUILDING
-========================= */
+/* =========================================================
+BUILDING
+========================================================= */
 
 .building-list {
     max-width: 1000px;
@@ -1391,9 +1246,9 @@ footer {
 }
 
 
-/* =========================
-   FOUNDERS
-========================= */
+/* =========================================================
+FOUNDERS
+========================================================= */
 
 .founders {
     padding: 150px 5vw;
@@ -1498,9 +1353,9 @@ footer {
 }
 
 
-/* =========================
-   CLOSING
-========================= */
+/* =========================================================
+ABOUT CLOSING
+========================================================= */
 
 .about-closing {
     padding: 180px 24px;
@@ -1537,9 +1392,9 @@ footer {
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* =========================================================
+ABOUT MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -1620,11 +1475,11 @@ footer {
     .about-closing h2 {
         font-size: 58px;
     }
-
 }
 
+
 /* =========================================================
-   WHY ZIENTRA
+WHY ZIENTRA
 ========================================================= */
 
 .why-zientra {
@@ -1634,9 +1489,9 @@ footer {
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* =========================================================
+WHY HEADER
+========================================================= */
 
 .why-header {
     max-width: 1100px;
@@ -1681,9 +1536,9 @@ footer {
 }
 
 
-/* =========================
-   LIST
-========================= */
+/* =========================================================
+WHY LIST
+========================================================= */
 
 .why-list {
     max-width: 1100px;
@@ -1692,11 +1547,6 @@ footer {
 
     border-top: 1px solid var(--border);
 }
-
-
-/* =========================
-   ITEM
-========================= */
 
 .why-item {
     display: grid;
@@ -1759,9 +1609,9 @@ footer {
 }
 
 
-/* =========================
-   GOAL FLOW
-========================= */
+/* =========================================================
+GOAL FLOW
+========================================================= */
 
 .goal-flow {
     margin-top: 40px;
@@ -1800,9 +1650,9 @@ footer {
 }
 
 
-/* =========================
-   CONTEXT
-========================= */
+/* =========================================================
+CONTEXT
+========================================================= */
 
 .context-tags {
     display: flex;
@@ -1827,9 +1677,9 @@ footer {
 }
 
 
-/* =========================
-   WORK GRAPH
-========================= */
+/* =========================================================
+WORK GRAPH
+========================================================= */
 
 .why-work-graph {
     padding-top: 90px;
@@ -1914,9 +1764,9 @@ footer {
 }
 
 
-/* =========================
-   GRAPH QUESTIONS
-========================= */
+/* =========================================================
+GRAPH QUESTIONS
+========================================================= */
 
 .graph-questions {
     margin-top: 45px;
@@ -1943,9 +1793,9 @@ footer {
 }
 
 
-/* =========================
-   HUMAN LOOP
-========================= */
+/* =========================================================
+HUMAN LOOP
+========================================================= */
 
 .human-loop {
     margin-top: 40px;
@@ -1978,9 +1828,9 @@ footer {
 }
 
 
-/* =========================
-   AGENTS
-========================= */
+/* =========================================================
+AGENTS
+========================================================= */
 
 .agent-grid {
     margin-top: 40px;
@@ -2025,9 +1875,9 @@ footer {
 }
 
 
-/* =========================
-   CLOSING
-========================= */
+/* =========================================================
+WHY CLOSING
+========================================================= */
 
 .why-closing {
     text-align: center;
@@ -2072,9 +1922,9 @@ footer {
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* =========================================================
+WHY MOBILE
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -2159,33 +2009,46 @@ footer {
     .why-closing h3 {
         font-size: 55px;
     }
-
 }
+
+
+/* =========================================================
+WORKSPACE IMAGES
+========================================================= */
 
 .workspace-images {
     position: relative;
+
     width: 100%;
+
     height: 700px;
+
     margin-top: 90px;
 }
 
 .workspace-image {
     position: absolute;
+
     display: block;
+
     border-radius: 6px;
 }
 
 .workspace-image-one {
     width: 68%;
+
     top: 0;
     left: 0;
+
     z-index: 1;
 }
 
 .workspace-image-two {
     width: 62%;
+
     top: 280px;
     right: 0;
+
     z-index: 2;
 
     box-shadow:
@@ -2195,26 +2058,38 @@ footer {
 
 .workspace-status {
     position: absolute;
+
     left: 0;
     bottom: 0;
 
     display: flex;
+
     align-items: center;
+
     gap: 9px;
 
     margin: 0;
 
     font-size: 11px;
+
     letter-spacing: 0.12em;
+
     color: #777;
 }
 
 .workspace-status span {
     width: 6px;
     height: 6px;
+
     border-radius: 50%;
+
     background: #6b8769;
 }
+
+
+/* =========================================================
+WORKSPACE IMAGES MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
 
@@ -2222,17 +2097,19 @@ footer {
         position: relative;
 
         width: 100%;
+
         height: auto;
 
         margin-top: 55px;
 
         display: flex;
+
         flex-direction: column;
+
         gap: 28px;
 
         overflow: visible;
     }
-
 
     .workspace-image {
         position: relative;
@@ -2248,12 +2125,11 @@ footer {
         border-radius: 5px;
     }
 
-
     .workspace-image-one {
         width: 100%;
+
         z-index: 1;
     }
-
 
     .workspace-image-two {
         width: 100%;
@@ -2267,7 +2143,6 @@ footer {
             0 18px 40px rgba(0, 0, 0, 0.15);
     }
 
-
     .workspace-status {
         position: relative;
 
@@ -2278,6 +2153,1039 @@ footer {
 
         font-size: 10px;
     }
-
 }
 
+
+/* =========================================================
+ZIENTRA PLATFORM / CODE EDITOR
+========================================================= */
+
+
+/* =========================================================
+MAIN PLATFORM WRAPPER
+========================================================= */
+
+.h-screen.w-full.bg-\[\#101010\] {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #101010;
+
+    color: #ddd;
+
+    font-family: "DM Sans", sans-serif;
+}
+
+
+/* =========================================================
+TOP BAR
+========================================================= */
+
+.h-screen.w-full.bg-\[\#101010\] > header {
+    height: 48px;
+
+    min-height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #292929;
+
+    background: #111111;
+}
+
+
+/* Logo */
+
+.h-screen.w-full.bg-\[\#101010\] > header > div:first-child {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #f5f5ee;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+.h-screen.w-full.bg-\[\#101010\] > header img {
+    width: 20px;
+
+    height: 20px;
+
+    object-fit: contain;
+}
+
+
+/* Room */
+
+.h-screen.w-full.bg-\[\#101010\] > header > div:nth-child(2) {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-left: 40px;
+
+    color: #ddd;
+
+    font-size: 12px;
+}
+
+.h-screen.w-full.bg-\[\#101010\] > header > div:nth-child(2) > span:first-child {
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #6b8769;
+}
+
+
+/* Right side */
+
+.h-screen.w-full.bg-\[\#101010\] > header > div:last-child {
+    margin-left: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.h-screen.w-full.bg-\[\#101010\] > header > div:last-child > div {
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* Leave button */
+
+.h-screen.w-full.bg-\[\#101010\] > header button {
+    padding: 6px 12px;
+
+    border: 1px solid #444;
+
+    background: transparent;
+
+    color: #aaa;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.h-screen.w-full.bg-\[\#101010\] > header button:hover {
+    border-color: #888;
+
+    color: #fff;
+}
+
+
+/* =========================================================
+MAIN AREA
+========================================================= */
+
+.h-screen.w-full.bg-\[\#101010\] > div:last-child {
+    min-height: 0;
+
+    flex: 1;
+
+    display: flex;
+}
+
+
+/* =========================================================
+SIDEBAR
+========================================================= */
+
+.h-screen.w-full.bg-\[\#101010\] aside:first-child {
+    width: 190px;
+
+    min-width: 190px;
+
+    box-sizing: border-box;
+
+    padding: 22px 12px;
+
+    overflow-y: auto;
+
+    border-right: 1px solid #292929;
+
+    background: #111111;
+
+    color: #888;
+
+    font-size: 11px;
+}
+
+
+/* Sidebar labels */
+
+.h-screen.w-full.bg-\[\#101010\] aside:first-child > div:first-child,
+.h-screen.w-full.bg-\[\#101010\] aside:first-child > div:nth-child(3) {
+    margin-bottom: 12px;
+
+    padding-left: 8px;
+
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* Room name */
+
+.h-screen.w-full.bg-\[\#101010\] aside:first-child > div:nth-child(2) {
+    margin-bottom: 35px;
+
+    padding: 9px 8px;
+
+    border-radius: 3px;
+
+    background: #1d1d1d;
+
+    color: #eee;
+
+    font-size: 12px;
+}
+
+
+/* Members */
+
+.h-screen.w-full.bg-\[\#101010\] aside:first-child
+> div:not(:first-child):not(:nth-child(2)):not(:nth-child(3)) {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 8px;
+
+    color: #aaa;
+}
+
+
+/* Avatar */
+
+.h-screen.w-full.bg-\[\#101010\] aside:first-child
+> div:not(:first-child):not(:nth-child(2)):not(:nth-child(3))
+> div {
+    width: 20px;
+
+    height: 20px;
+
+    min-width: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #292929;
+
+    color: #ccc;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+CODE EDITOR
+========================================================= */
+
+.h-screen.w-full.bg-\[\#101010\] > div:last-child > main {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* Editor header */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> main
+> div:first-child {
+    height: 40px;
+
+    min-height: 40px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    border-bottom: 1px solid #292929;
+
+    background: #101010;
+
+    color: #777;
+
+    font-size: 10px;
+}
+
+
+/* Language selector */
+
+.h-screen.w-full.bg-\[\#101010\] select {
+    padding: 4px 8px;
+
+    border: 1px solid #292929;
+
+    outline: none;
+
+    background: #101010;
+
+    color: #777;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 11px;
+}
+
+.h-screen.w-full.bg-\[\#101010\] select option {
+    background: #111111;
+
+    color: #ddd;
+}
+
+
+/* Monaco wrapper */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> main
+> div:last-child {
+    min-height: 0;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+CHAT
+========================================================= */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child {
+    width: 300px;
+
+    min-width: 300px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border-left: 1px solid #292929;
+
+    background: #111111;
+
+    color: #aaa;
+}
+
+
+/* Chat header */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:first-child {
+    height: 40px;
+
+    min-height: 40px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 16px;
+
+    border-bottom: 1px solid #292929;
+
+    color: #ddd;
+
+    font-size: 11px;
+}
+
+
+/* Chat count */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:first-child
+> span:last-child {
+    color: #666;
+}
+
+
+/* Messages */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:nth-child(2) {
+    min-height: 0;
+
+    flex: 1;
+
+    overflow-y: auto;
+
+    padding: 18px 16px;
+
+    box-sizing: border-box;
+}
+
+
+/* Individual message */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:nth-child(2)
+> div {
+    margin-bottom: 22px;
+}
+
+
+/* Sender */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:nth-child(2)
+> div
+> div {
+    color: #ddd;
+
+    font-size: 10px;
+
+    font-weight: 500;
+}
+
+
+/* Message text */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:nth-child(2)
+> div
+> p {
+    margin: 5px 0 0;
+
+    color: #777;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    word-break: break-word;
+}
+
+
+/* Empty state */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:nth-child(2)
+> div:last-child {
+    color: #555;
+
+    font-size: 11px;
+}
+
+
+/* Chat footer */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:last-child {
+    padding: 12px;
+
+    border-top: 1px solid #292929;
+
+    box-sizing: border-box;
+}
+
+
+/* Input wrapper */
+
+.h-screen.w-full.bg-\[\#101010\]
+> div:last-child
+> aside:last-child
+> div:last-child
+> div {
+    display: flex;
+
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    border: 1px solid #292929;
+
+    box-sizing: border-box;
+}
+
+
+/* Chat input */
+
+.h-screen.w-full.bg-\[\#101010\] input {
+    min-width: 0;
+
+    flex: 1;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #ccc;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 11px;
+}
+
+.h-screen.w-full.bg-\[\#101010\] input::placeholder {
+    color: #555;
+}
+
+
+/* Send button */
+
+.h-screen.w-full.bg-\[\#101010\]
+aside:last-child
+button {
+    border: none;
+
+    background: transparent;
+
+    color: #777;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: color 0.2s ease;
+}
+
+.h-screen.w-full.bg-\[\#101010\]
+aside:last-child
+button:hover {
+    color: #fff;
+}
+
+
+/* =========================================================
+PLATFORM RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .h-screen.w-full.bg-\[\#101010\]
+    > div:last-child
+    > aside:first-child {
+        width: 150px;
+
+        min-width: 150px;
+    }
+
+    .h-screen.w-full.bg-\[\#101010\]
+    > div:last-child
+    > aside:last-child {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .h-screen.w-full.bg-\[\#101010\]
+    > div:last-child
+    > aside:first-child {
+        display: none;
+    }
+
+    .h-screen.w-full.bg-\[\#101010\]
+    > header {
+        padding: 0 12px;
+    }
+
+    .h-screen.w-full.bg-\[\#101010\]
+    > header
+    > div:nth-child(2) {
+        margin-left: 20px;
+    }
+
+    .h-screen.w-full.bg-\[\#101010\]
+    > header
+    > div:last-child {
+        gap: 10px;
+    }
+
+    .h-screen.w-full.bg-\[\#101010\]
+    > header
+    > div:last-child
+    > div:first-child {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+PLATFORM — WORKSPACE ENTRY
+========================================================= */
+
+.platform-home {
+    min-height: 100vh;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding: 20px;
+
+    background: #f5f5ee;
+
+    color: #111111;
+
+    font-family: "DM Sans", sans-serif;
+}
+
+
+/* =========================================================
+CARD
+========================================================= */
+
+.platform-home-card {
+    width: 100%;
+
+    max-width: 495px;
+
+    box-sizing: border-box;
+
+    /*
+     * Reduced from:
+     * 40px 37px 37px
+     *
+     * to make the complete form fit
+     * comfortably inside the viewport.
+     */
+
+    padding: 28px 37px;
+
+    border: 1px solid #d9d9d0;
+
+    background: #eeeeE6;
+}
+
+
+/* =========================================================
+LOGO
+========================================================= */
+
+.platform-home-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 32px;
+
+    color: #111111;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.055em;
+}
+
+.platform-home-logo img {
+    width: 21px;
+
+    height: 21px;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+TITLE
+========================================================= */
+
+.platform-home-title {
+    margin: 0 0 8px;
+
+    color: #111111;
+
+    font-family: "Manrope", sans-serif;
+
+    font-size: 42px;
+
+    font-weight: 600;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.065em;
+}
+
+
+/* =========================================================
+DESCRIPTION
+========================================================= */
+
+.platform-home-description {
+    margin: 0 0 24px;
+
+    color: #74746d;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+LABEL
+========================================================= */
+
+.platform-form-label {
+    display: block;
+
+    margin: 0 0 6px;
+
+    color: #74746d;
+
+    font-size: 12px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+INPUT
+========================================================= */
+
+.platform-form-input {
+    display: block;
+
+    width: 100%;
+
+    /*
+     * Reduced from 53px to 46px.
+     */
+
+    height: 46px;
+
+    box-sizing: border-box;
+
+    /*
+     * Reduced spacing between inputs.
+     */
+
+    margin: 0 0 14px;
+
+    padding: 0 13px;
+
+    border: 1px solid #d5d5cc;
+
+    outline: none;
+
+    border-radius: 0;
+
+    background: #f5f5ee;
+
+    color: #111111;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 14px;
+}
+
+.platform-form-input::placeholder {
+    color: #8d8d87;
+}
+
+.platform-form-input:focus {
+    border-color: #999990;
+}
+
+
+/* =========================================================
+CREATE BUTTON
+========================================================= */
+
+.platform-primary-button {
+    width: 100%;
+
+    /*
+     * Reduced from 51px to 46px.
+     */
+
+    height: 46px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #111111;
+
+    border-radius: 0;
+
+    background: #111111;
+
+    color: #f5f5ee;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.platform-primary-button:hover {
+    background: #252525;
+}
+
+.platform-primary-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+DIVIDER
+========================================================= */
+
+.platform-divider {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    width: 100%;
+
+    /*
+     * Reduced from:
+     * 39px 0 36px
+     *
+     * to:
+     * 20px 0
+     */
+
+    margin: 20px 0;
+}
+
+.platform-divider-line {
+    height: 1px;
+
+    flex: 1;
+
+    background: #d6d6cd;
+}
+
+.platform-divider-text {
+    color: #999990;
+
+    font-size: 10px;
+
+    line-height: 1;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+SECONDARY / JOIN BUTTON
+========================================================= */
+
+.platform-secondary-button {
+    width: 100%;
+
+    height: 46px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #111111;
+
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-family: "DM Sans", sans-serif;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.platform-secondary-button:hover {
+    background: #111111;
+
+    color: #f5f5ee;
+}
+
+.platform-secondary-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+ERROR
+========================================================= */
+
+.platform-error {
+    margin: 12px 0 0;
+
+    color: #b42318;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+PLATFORM MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .platform-home {
+        align-items: flex-start;
+
+        padding: 16px;
+    }
+
+    .platform-home-card {
+        margin-top: 16px;
+
+        padding: 24px;
+    }
+
+    .platform-home-logo {
+        margin-bottom: 28px;
+    }
+
+    .platform-home-title {
+        font-size: 36px;
+    }
+
+    .platform-home-description {
+        margin-bottom: 20px;
+    }
+
+    .platform-form-input {
+        height: 44px;
+
+        margin-bottom: 12px;
+    }
+
+    .platform-primary-button,
+    .platform-secondary-button {
+        height: 44px;
+    }
+
+    .platform-divider {
+        margin: 18px 0;
+    }
+}
+
+
+/* =========================================================
+ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}

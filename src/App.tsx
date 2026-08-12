@@ -40,8 +40,8 @@ function App() {
                 />
                 
 
-                {/* // Testing editor 
-                <Route
+                // Testing editor 
+                {/* <Route
                     path="/editor-test"
                     element={<Platform />}
                 /> */}

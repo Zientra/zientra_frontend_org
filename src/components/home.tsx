@@ -80,90 +80,91 @@ const Home = () => {
 
 
                 <motion.section
-                    className="product"
-                    id="product"
+    className="product"
+    id="product"
+    variants={sectionReveal}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{
+        once: true,
+        amount: 0.2
+    }}
+>
+    <div className="section-meta">
+        <span>01</span>
+        PRODUCT
+    </div>
 
-                    variants={sectionReveal}
+    <div className="product-intro">
+        <motion.h2 variants={fadeUp}>
+            One place to
+            <br />
+            <span>build.</span>
+        </motion.h2>
 
-                    initial="hidden"
-
-                    whileInView="visible"
-
-                    viewport={{
-                        once: true,
-                        amount: 0.2
-                    }}
-                >
-
-                    <div className="section-meta">
-
-                        <span>
-                            01
-                        </span>
-
-                        PRODUCT
-
-                    </div>
-
-
-                    <div className="product-intro">
-
-                        <motion.h2
-                            variants={fadeUp}
-                        >
-
-                            One place to
-
-                            <br />
-
-                            <span>
-                                build.
-                            </span>
-
-                        </motion.h2>
+        <motion.p variants={fadeUp}>
+            Code, conversations, tasks and
+            AI agents — working together inside
+            the same room.
+        </motion.p>
+    </div>
 
 
-                        <motion.p
-                            variants={fadeUp}
-                        >
+    {/* PRODUCT SCREENSHOTS */}
 
-                            Code, conversations, tasks and
-                            AI agents — working together inside
-                            the same room.
+    <div className="workspace-images">
 
-                        </motion.p>
+    <motion.img
+        src="/code_editor.png"
+        alt="Zientra collaborative editor"
+        className="workspace-image workspace-image-one"
+        initial={{
+            opacity: 0,
+            y: 40
+        }}
+        whileInView={{
+            opacity: 1,
+            y: 0
+        }}
+        viewport={{
+            once: true
+        }}
+        transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1]
+        }}
+    />
 
-                    </div>
+    <motion.img
+        src="/room_join.png"
+        alt="Zientra workspace"
+        className="workspace-image workspace-image-two"
+        initial={{
+            opacity: 0,
+            y: 60
+        }}
+        whileInView={{
+            opacity: 1,
+            y: 0
+        }}
+        viewport={{
+            once: true
+        }}
+        transition={{
+            delay: 0.15,
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1]
+        }}
+    />
 
+    <p className="workspace-status">
+        <span />
+        IN DEVELOPMENT
+    </p>
 
-                    <motion.div
-                        className="workspace"
+</div>
 
-                        variants={workspaceReveal}
-
-                        initial="hidden"
-
-                        whileInView="visible"
-
-                        viewport={{
-                            once: true,
-                            amount: 0.15
-                        }}
-
-                        whileHover={{
-                            y: -4
-                        }}
-                    >
-
-                        <img
-                            src="/workspace-preview.png"
-                            alt="Zientra collaborative workspace"
-                            className="workspace-preview"
-                        />
-
-                    </motion.div>
-
-                </motion.section>
+</motion.section>
 
                 <motion.section
                     className="statement"

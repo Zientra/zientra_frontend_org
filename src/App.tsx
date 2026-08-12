@@ -10,6 +10,7 @@ import Home from "./components/home";
 import About from "./components/about";
 import Contact from "./components/contact"
 import WhyZientra from "./components/whyzientra";
+import Platform from "./platform/platform";
 
 function App() {
 
@@ -37,6 +38,13 @@ function App() {
                   path="/why-zientra"
                   element={<WhyZientra></WhyZientra>}
                 />
+                
+
+                {/* // Testing editor 
+                <Route
+                    path="/editor-test"
+                    element={<Platform />}
+                /> */}
 
 
             </Routes>

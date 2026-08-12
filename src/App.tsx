@@ -10,7 +10,7 @@ import Home from "./components/home";
 import About from "./components/about";
 import Contact from "./components/contact"
 import WhyZientra from "./components/whyzientra";
-import Platform from "./platform/platform";
+// import Platform from "./platform/platform";
 
 function App() {
 

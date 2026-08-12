@@ -46,28 +46,6 @@ const Home = () => {
     };
 
 
-    const workspaceReveal: Variants = {
-
-        hidden: {
-            opacity: 0,
-            y: 50,
-            scale: 0.985
-        },
-
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-
-            transition: {
-                duration: 1,
-                ease: [0.22, 1, 0.36, 1]
-            }
-        }
-
-    };
-
-
     return (
 
         <div className="app">

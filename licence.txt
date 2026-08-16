@@ -1,0 +1,5 @@
+Copyright (c) 2026 Zientra. All rights reserved.
+
+This software and its documentation are proprietary and confidential. 
+Unauthorized copying, modification, distribution, or use of this file, 
+via any medium, is strictly prohibited.

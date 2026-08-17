@@ -49,10 +49,6 @@ const Platform = () => {
     const [loading, setLoading] = useState(false);
     const [connected, setConnected] = useState(false);
 
-    const [mode, setMode] = useState<"home" | "create" | "join">(
-        "home"
-    );
-
 
 
     //CONNECT WEBSOCKET

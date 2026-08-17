@@ -39,9 +39,9 @@ const About = () => {
 
             <main>
 
-                {/* =========================
+                {/* 
                     HERO
-                ========================= */}
+                 */}
 
                 <section className="about-hero">
 
@@ -101,9 +101,9 @@ const About = () => {
                 </section>
 
 
-                {/* =========================
+                {/* 
                     WHAT IS ZIENTRA
-                ========================= */}
+                */}
 
                 <motion.section
                     className="about-section"
@@ -177,9 +177,9 @@ const About = () => {
                 </motion.section>
 
 
-                {/* =========================
+                {/* 
                     VISION
-                ========================= */}
+                 */}
 
                 <motion.section
                     className="vision"
@@ -275,9 +275,9 @@ const About = () => {
                 </motion.section>
 
 
-                {/* =========================
+                {/* 
                     WHAT WE ARE BUILDING
-                ========================= */}
+                 */}
 
                 <motion.section
                     className="about-section"
@@ -463,9 +463,9 @@ const About = () => {
                 </motion.section>
 
 
-                {/* =========================
+                {/* 
                     FOUNDERS
-                ========================= */}
+                 */}
 
                 <motion.section
                     className="founders"
@@ -598,9 +598,9 @@ const About = () => {
                 </motion.section>
 
 
-                {/* =========================
+                {/* 
                     CLOSING
-                ========================= */}
+                 */}
 
                 <motion.section
                     className="about-closing"
@@ -645,9 +645,9 @@ const About = () => {
             </main>
 
 
-            {/* =========================
+            {/* 
                 FOOTER
-            ========================= */}
+             */}
 
             <footer>
 

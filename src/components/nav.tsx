@@ -43,10 +43,10 @@ const Nav = () => {
                     "
                 >
                     <img
-                        src="/logo.png"
+                        src="/logo_nobg.png"
                         alt="Zientra"
                         className="
-                            w-[18px] h-[18px]
+                            w-[20px] h-[20px]
                             sm:w-5 sm:h-5
                             object-contain
                         "

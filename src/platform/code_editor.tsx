@@ -1,5 +1,14 @@
 import Editor from "@monaco-editor/react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import {
+    ChevronRight,
+    ChevronDown,
+    Folder,
+    FolderOpen,
+    FileCode,
+    Users,
+    X
+} from "lucide-react";
 import type {
     ChatMessage,
     RoomState,
@@ -34,6 +43,42 @@ const languages = [
     "json",
 ];
 
+// ============================================================
+// LANGUAGE -> FILE ICON COLOR
+// ============================================================
+//
+// Loosely matches the community file-icon colors VS Code users
+// already recognize, so the explorer reads as familiar rather
+// than arbitrary.
+//
+const languageColors: Record<string, string> = {
+    javascript: "#f0db4f",
+    typescript: "#3b82f6",
+    python: "#4b8bbe",
+    java: "#e76f00",
+    cpp: "#659ad2",
+    c: "#a8b9cc",
+    go: "#00add8",
+    rust: "#dea584",
+    html: "#e34c26",
+    css: "#8a67d7",
+    json: "#c9b25a",
+};
+
+const languageExtensions: Record<string, string> = {
+    javascript: "js",
+    typescript: "ts",
+    python: "py",
+    java: "java",
+    cpp: "cpp",
+    c: "c",
+    go: "go",
+    rust: "rs",
+    html: "html",
+    css: "css",
+    json: "json",
+};
+
 const CodeEditor = ({
     room,
     users,
@@ -48,6 +93,10 @@ const CodeEditor = ({
 }: CodeEditorProps) => {
 
     const [message, setMessage] = useState("");
+    const [folderExpanded, setFolderExpanded] = useState(true);
+    const [membersOpen, setMembersOpen] = useState(false);
+
+    const membersRef = useRef<HTMLDivElement | null>(null);
 
     const sendChat = () => {
         const trimmed = message.trim();
@@ -60,14 +109,38 @@ const CodeEditor = ({
         setMessage("");
     };
 
+    // Close the members popover on outside click.
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (
+                membersRef.current &&
+                !membersRef.current.contains(event.target as Node)
+            ) {
+                setMembersOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const fileName = `main.${languageExtensions[language] ?? language}`;
+    const fileColor = languageColors[language] ?? "#888";
+
+    const visibleAvatars = users.slice(0, 4);
+    const overflowCount = users.length - visibleAvatars.length;
+
     return (
         <div className="h-screen w-full bg-[#101010] text-[#ddd] flex flex-col overflow-hidden">
 
-            {/* 
+            {/* =====================================================
                 TOP BAR
-             */}
+            ===================================================== */}
 
-            <header className="h-12 shrink-0 flex items-center px-4 border-b border-[#292929] bg-[#111111]">
+            <header className="h-12 shrink-0 flex items-center px-4 border-b border-[#292929] bg-[#111111] relative">
 
                 {/* Logo */}
 
@@ -114,6 +187,194 @@ const CodeEditor = ({
                         {room.join_code}
                     </div>
 
+
+                    {/* ===========================================
+                        MEMBERS AVATAR STACK
+                    =========================================== */}
+
+                    <div
+                        ref={membersRef}
+                        className="relative"
+                    >
+
+                        <button
+                            type="button"
+                            onClick={() => {
+                                setMembersOpen((open) => !open);
+                            }}
+                            className="
+                                flex
+                                items-center
+                                gap-1.5
+                                px-2
+                                py-1
+                                rounded
+                                hover:bg-[#1d1d1d]
+                                transition-colors
+                            "
+                        >
+
+                            <div className="flex -space-x-2">
+
+                                {visibleAvatars.map((user) => (
+
+                                    <div
+                                        key={user.user_id}
+                                        className="
+                                            w-6
+                                            h-6
+                                            rounded-full
+                                            bg-[#292929]
+                                            border
+                                            border-[#111111]
+                                            flex
+                                            items-center
+                                            justify-center
+                                            text-[10px]
+                                            text-[#ccc]
+                                        "
+                                    >
+                                        {user.display_name
+                                            .charAt(0)
+                                            .toUpperCase()
+                                        }
+                                    </div>
+
+                                ))}
+
+                                {overflowCount > 0 && (
+
+                                    <div className="
+                                        w-6
+                                        h-6
+                                        rounded-full
+                                        bg-[#2a2a2a]
+                                        border
+                                        border-[#111111]
+                                        flex
+                                        items-center
+                                        justify-center
+                                        text-[9px]
+                                        text-[#999]
+                                    ">
+                                        +{overflowCount}
+                                    </div>
+
+                                )}
+
+                            </div>
+
+                            <Users
+                                size={13}
+                                className="text-[#777]"
+                            />
+
+                        </button>
+
+
+                        {/* Members popover */}
+
+                        {membersOpen && (
+
+                            <div className="
+                                absolute
+                                right-0
+                                top-[calc(100%+8px)]
+                                w-56
+                                bg-[#161616]
+                                border
+                                border-[#292929]
+                                rounded-lg
+                                shadow-xl
+                                z-50
+                                overflow-hidden
+                            ">
+
+                                <div className="
+                                    flex
+                                    items-center
+                                    justify-between
+                                    px-3
+                                    py-2.5
+                                    border-b
+                                    border-[#292929]
+                                ">
+                                    <span className="text-[11px] tracking-[0.1em] text-[#666]">
+                                        MEMBERS — {users.length}
+                                    </span>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setMembersOpen(false);
+                                        }}
+                                        className="text-[#666] hover:text-[#ccc] transition-colors"
+                                    >
+                                        <X size={13} />
+                                    </button>
+                                </div>
+
+                                <div className="max-h-64 overflow-y-auto py-1">
+
+                                    {users.map((user) => (
+
+                                        <div
+                                            key={user.user_id}
+                                            className="
+                                                flex
+                                                items-center
+                                                gap-2.5
+                                                px-3
+                                                py-2
+                                                text-[13px]
+                                                text-[#ccc]
+                                                hover:bg-[#1d1d1d]
+                                            "
+                                        >
+
+                                            <div className="
+                                                w-6
+                                                h-6
+                                                rounded-full
+                                                bg-[#292929]
+                                                flex
+                                                items-center
+                                                justify-center
+                                                text-[10px]
+                                                text-[#ccc]
+                                                shrink-0
+                                            ">
+                                                {user.display_name
+                                                    .charAt(0)
+                                                    .toUpperCase()
+                                                }
+                                            </div>
+
+                                            <span className="truncate">
+                                                {user.display_name}
+                                            </span>
+
+                                        </div>
+
+                                    ))}
+
+                                    {users.length === 0 && (
+
+                                        <div className="px-3 py-3 text-[11px] text-[#555]">
+                                            No members
+                                        </div>
+
+                                    )}
+
+                                </div>
+
+                            </div>
+
+                        )}
+
+                    </div>
+
+
                     <button
                         type="button"
                         onClick={onLeaveRoom}
@@ -137,112 +398,101 @@ const CodeEditor = ({
             </header>
 
 
-            {/* 
+            {/* =====================================================
                 MAIN
-             */}
+            ===================================================== */}
 
             <div className="flex flex-1 min-h-0">
 
 
-                {/* 
-                    SIDEBAR
-                 */}
+                {/* =================================================
+                    FILE EXPLORER
+                ================================================= */}
 
-                <aside className="w-[190px] shrink-0 border-r border-[#292929] bg-[#111111] p-3 overflow-y-auto">
-
-                    {/* Room label */}
+                <aside className="w-[190px] shrink-0 border-r border-[#292929] bg-[#111111] p-2 overflow-y-auto">
 
                     <div className="
                         text-[10px]
                         tracking-[0.12em]
                         text-[#555]
-                        mb-3
-                    ">
-                        ROOM
-                    </div>
-
-
-                    {/* Room name */}
-
-                    <div className="
                         px-2
                         py-2
-                        rounded
-                        bg-[#1d1d1d]
-                        text-[13px]
-                        text-[#eee]
-                        mb-8
+                        mb-1
                     ">
-                        # {room.room_name}
+                        EXPLORER
                     </div>
 
 
-                    {/* Members label */}
+                    {/* Root folder row */}
 
-                    <div className="
-                        text-[10px]
-                        tracking-[0.12em]
-                        text-[#555]
-                        mb-3
-                    ">
-                        MEMBERS
-                    </div>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setFolderExpanded((expanded) => !expanded);
+                        }}
+                        className="
+                            w-full
+                            flex
+                            items-center
+                            gap-1
+                            px-1
+                            py-1.5
+                            rounded
+                            text-[12px]
+                            text-[#ccc]
+                            hover:bg-[#1a1a1a]
+                            transition-colors
+                        "
+                    >
+
+                        {folderExpanded
+                            ? <ChevronDown size={13} className="text-[#666] shrink-0" />
+                            : <ChevronRight size={13} className="text-[#666] shrink-0" />
+                        }
+
+                        {folderExpanded
+                            ? <FolderOpen size={14} className="text-[#8a9a7e] shrink-0" />
+                            : <Folder size={14} className="text-[#8a9a7e] shrink-0" />
+                        }
+
+                        <span className="truncate font-medium">
+                            {room.room_name}
+                        </span>
+
+                    </button>
 
 
-                    {/* Members */}
+                    {/* Single active file */}
 
-                    {users.map((user) => (
+                    {folderExpanded && (
 
-                        <div
-                            key={user.user_id}
-                            className="
-                                flex
-                                items-center
-                                gap-2
-                                px-2
-                                py-2
-                                text-[13px]
-                                text-[#aaa]
-                            "
-                        >
+                        <div className="ml-4 mt-0.5 border-l border-[#242424] pl-2">
 
                             <div className="
-                                w-6
-                                h-6
-                                rounded-full
-                                bg-[#292929]
                                 flex
                                 items-center
-                                justify-center
-                                text-[10px]
-                                text-[#ccc]
-                                shrink-0
+                                gap-1.5
+                                px-2
+                                py-1.5
+                                rounded
+                                bg-[#1d1d1d]
+                                text-[12px]
+                                text-[#eee]
+                                cursor-default
                             ">
 
-                                {user.display_name
-                                    .charAt(0)
-                                    .toUpperCase()
-                                }
+                                <FileCode
+                                    size={13}
+                                    style={{ color: fileColor }}
+                                    className="shrink-0"
+                                />
+
+                                <span className="truncate">
+                                    {fileName}
+                                </span>
 
                             </div>
 
-                            <span className="truncate">
-                                {user.display_name}
-                            </span>
-
-                        </div>
-
-                    ))}
-
-
-                    {users.length === 0 && (
-
-                        <div className="
-                            text-[11px]
-                            text-[#555]
-                            px-2
-                        ">
-                            No members
                         </div>
 
                     )}
@@ -250,9 +500,9 @@ const CodeEditor = ({
                 </aside>
 
 
-                {/* 
+                {/* =================================================
                     CODE EDITOR
-                 */}
+                ================================================= */}
 
                 <main className="
                     flex-1
@@ -275,9 +525,15 @@ const CodeEditor = ({
                         bg-[#101010]
                     ">
 
-                        <span className="text-[12px] text-[#777]">
-                            main.{language}
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                            <FileCode
+                                size={13}
+                                style={{ color: fileColor }}
+                            />
+                            <span className="text-[12px] text-[#999]">
+                                {fileName}
+                            </span>
+                        </div>
 
 
                         <select
@@ -357,9 +613,9 @@ const CodeEditor = ({
                 </main>
 
 
-                {/* 
+                {/* =================================================
                     CHAT
-                 */}
+                ================================================= */}
 
                 <aside className="
                     w-[300px]

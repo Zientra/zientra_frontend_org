@@ -96,7 +96,61 @@ const CodeEditor = ({
     const [folderExpanded, setFolderExpanded] = useState(true);
     const [membersOpen, setMembersOpen] = useState(false);
 
+    // agent suggestion
+
+    const agents = [
+        {
+            id: "debug_agent",
+            name: "debug_agent",
+            description: "Find and fix bugs in your code",
+        },
+        {
+            id: "developer_agent",
+            name: "developer_agent",
+            description: "Write and modify code",
+        },
+        {
+            id: "tester_agent",
+            name: "tester_agent",
+            description: "Test code and suggest improvements",
+        },
+    ];
+
+    const [showAgentSuggestions, setShowAgentSuggestions] = useState(false);
+    const [agentQuery, setAgentQuery] = useState("");
+    const [selectedAgent, setSelectedAgent] = useState(0);
+
+    const filteredAgents = agents.filter((agent) =>
+        agent.name
+            .toLowerCase()
+            .startsWith(agentQuery.toLowerCase())
+    );
+
     const membersRef = useRef<HTMLDivElement | null>(null);
+
+    const selectAgent = (agentName: string) => {
+
+    const match = message.match(
+        /@([a-zA-Z0-9_]*)$/
+    );
+
+    if (!match) {
+        return;
+    }
+
+    const startIndex =
+        message.length - match[0].length;
+
+    const newMessage =
+        message.slice(0, startIndex) +
+        `@${agentName} `;
+
+    setMessage(newMessage);
+
+    setShowAgentSuggestions(false);
+    setAgentQuery("");
+    setSelectedAgent(0);
+};
 
     const sendChat = () => {
         const trimmed = message.trim();
@@ -132,6 +186,8 @@ const CodeEditor = ({
 
     const visibleAvatars = users.slice(0, 4);
     const overflowCount = users.length - visibleAvatars.length;
+
+    
 
     return (
         <div className="h-screen w-full bg-[#101010] text-[#ddd] flex flex-col overflow-hidden">
@@ -710,70 +766,268 @@ const CodeEditor = ({
                     </div>
 
 
-                    {/* Chat input */}
+ {/* =====================================================
+    CHAT INPUT
+===================================================== */}
 
-                    <div className="
-                        p-3
-                        border-t
-                        border-[#292929]
-                    ">
+<div className="
+    p-3
+    border-t
+    border-[#292929]
+">
+
+    <div className="relative">
+
+        {/* =============================================
+            AGENT SUGGESTIONS
+        ============================================= */}
+
+        {showAgentSuggestions &&
+            filteredAgents.length > 0 && (
+
+            <div
+                className="
+                    absolute
+                    bottom-full
+                    left-0
+                    right-0
+                    mb-2
+                    bg-[#161616]
+                    border
+                    border-[#292929]
+                    rounded-md
+                    shadow-2xl
+                    overflow-hidden
+                    z-50
+                "
+            >
+
+                {filteredAgents.map(
+                    (agent, index) => (
+
+                    <button
+                        key={agent.id}
+                        type="button"
+                        onMouseDown={(event) => {
+
+                            event.preventDefault();
+
+                            selectAgent(
+                                agent.name
+                            );
+
+                        }}
+
+                        className={`
+                            w-full
+                            flex
+                            items-center
+                            gap-3
+                            px-3
+                            py-2.5
+                            text-left
+                            transition-colors
+
+                            ${
+                                index === selectedAgent
+                                    ? "bg-[#222222]"
+                                    : "hover:bg-[#1d1d1d]"
+                            }
+                        `}
+                    >
 
                         <div className="
+                            w-6
+                            h-6
+                            shrink-0
                             flex
-                            gap-2
+                            items-center
+                            justify-center
                             border
-                            border-[#292929]
-                            px-2
-                            py-1.5
+                            border-[#333]
+                            rounded
+                            text-[11px]
+                            text-[#aaa]
+                        ">
+                            ✦
+                        </div>
+
+                        <div className="
+                            min-w-0
+                            flex
+                            flex-col
+                            gap-0.5
                         ">
 
-                            <input
-                                value={message}
-                                onChange={(event) => {
-                                    setMessage(
-                                        event.target.value
-                                    );
-                                }}
-                                onKeyDown={(event) => {
+                            <span className="
+                                text-[12px]
+                                text-[#ddd]
+                            ">
+                                @{agent.name}
+                            </span>
 
-                                    if (
-                                        event.key === "Enter" &&
-                                        !event.shiftKey
-                                    ) {
-                                        event.preventDefault();
-
-                                        sendChat();
-                                    }
-
-                                }}
-                                placeholder="Message team..."
-                                className="
-                                    flex-1
-                                    min-w-0
-                                    bg-transparent
-                                    outline-none
-                                    text-[13px]
-                                    text-[#ccc]
-                                    placeholder:text-[#555]
-                                "
-                            />
-
-                            <button
-                                type="button"
-                                onClick={sendChat}
-                                className="
-                                    text-[13px]
-                                    text-[#777]
-                                    hover:text-[#fff]
-                                    transition-colors
-                                "
-                            >
-                                ↑
-                            </button>
+                            <span className="
+                                text-[10px]
+                                text-[#666]
+                                truncate
+                            ">
+                                {agent.description}
+                            </span>
 
                         </div>
 
-                    </div>
+                    </button>
+
+                ))}
+
+            </div>
+
+        )}
+
+
+        {/* =============================================
+            INPUT
+        ============================================= */}
+
+        <div className="
+    flex
+    items-center
+    gap-2
+    border
+    border-[#292929]
+    px-3
+    py-2
+    w-full
+">
+
+    <input
+        value={message}
+
+        onChange={(event) => {
+
+            const value = event.target.value;
+
+            setMessage(value);
+
+            const match = value.match(
+                /@([a-zA-Z0-9_]*)$/
+            );
+
+            if (match) {
+
+                setAgentQuery(match[1]);
+                setShowAgentSuggestions(true);
+                setSelectedAgent(0);
+
+            } else {
+
+                setShowAgentSuggestions(false);
+                setAgentQuery("");
+
+            }
+
+        }}
+
+        onKeyDown={(event) => {
+
+            if (
+                showAgentSuggestions &&
+                filteredAgents.length > 0
+            ) {
+
+                if (event.key === "ArrowDown") {
+
+                    event.preventDefault();
+
+                    setSelectedAgent((current) =>
+                        Math.min(
+                            current + 1,
+                            filteredAgents.length - 1
+                        )
+                    );
+
+                    return;
+                }
+
+                if (event.key === "ArrowUp") {
+
+                    event.preventDefault();
+
+                    setSelectedAgent((current) =>
+                        Math.max(current - 1, 0)
+                    );
+
+                    return;
+                }
+
+                if (event.key === "Enter") {
+
+                    event.preventDefault();
+
+                    selectAgent(
+                        filteredAgents[selectedAgent].name
+                    );
+
+                    return;
+                }
+
+                if (event.key === "Escape") {
+
+                    event.preventDefault();
+
+                    setShowAgentSuggestions(false);
+
+                    return;
+                }
+            }
+
+            if (
+                event.key === "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendChat();
+
+            }
+
+        }}
+
+        placeholder="Message team..."
+
+        className="
+            flex-1
+            w-full
+            min-w-0
+            bg-transparent
+            outline-none
+            border-none
+            text-[13px]
+            text-[#ccc]
+            placeholder:text-[#555]
+        "
+    />
+
+    <button
+        type="button"
+        onClick={sendChat}
+        className="
+            shrink-0
+            text-[14px]
+            text-[#777]
+            hover:text-[#fff]
+            transition-colors
+        "
+    >
+        ↑
+    </button>
+
+</div>
+
+    </div>
+
+</div>
 
                 </aside>
 

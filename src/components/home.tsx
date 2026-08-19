@@ -3,6 +3,7 @@ import { motion, type Variants } from "framer-motion";
 import Nav from "./nav";
 import Hero from "./hero";
 import { Link } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 
 const Home = () => {
 
@@ -49,6 +50,8 @@ const Home = () => {
     return (
 
         <div className="app">
+
+            <Analytics />
 
             <Nav />
 

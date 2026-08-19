@@ -685,7 +685,7 @@ const Platform = () => {
                 <div className="platform-home-logo">
 
                     <img
-                        src="/logo.png"
+                        src="/logo_nobg.png"
                         alt="Zientra"
                     />
 

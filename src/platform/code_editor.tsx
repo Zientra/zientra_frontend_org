@@ -203,7 +203,7 @@ const CodeEditor = ({
                 <div className="flex items-center gap-2 font-['Manrope'] font-semibold text-[15px] text-[#f5f5ee]">
 
                     <img
-                        src="/logo.png"
+                        src="/white_logo_nobg.png"
                         className="w-5 h-5 object-contain"
                         alt="Zientra"
                     />

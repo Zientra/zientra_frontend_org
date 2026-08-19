@@ -100,8 +100,8 @@ const Nav = () => {
 
 
                 {/* Desktop CTA */}
-                <a
-                    href="/waitlist"
+                <Link
+                    to="/waitlist"
                     className="
                         hidden
                         md:flex
@@ -130,7 +130,7 @@ const Nav = () => {
                     <span className="text-xs lg:text-sm">
                         ↗
                     </span>
-                </a>
+                </Link>
 
 
                 {/* Mobile Hamburger */}
@@ -283,33 +283,34 @@ const Nav = () => {
                     </Link>
 
 
-                    <a
-                        href="/#waitlist"
-                        onClick={closeMenu}
-                        className="
-                            mt-10
-                            w-fit
-                            flex
-                            items-center
-                            gap-3
-                            bg-[#111111]
-                            !text-[#f5f5ee]
-                            px-5
-                            py-3.5
-                            rounded
-                            text-sm
-                            hover:bg-[#111111]
-                            hover:!text-[#f5f5ee]
-                        "
-                    >
-                        <span className="!text-[#f5f5ee]">
-                            Join waitlist
-                        </span>
+                    <Link
+    to="/waitlist"
+    onClick={closeMenu}
+    className="
+        mt-10
+        w-fit
+        flex
+        items-center
+        gap-3
+        bg-[#111111]
+        !text-[#f5f5ee]
+        px-5
+        py-3.5
+        rounded
+        text-sm
+        font-medium
+        hover:bg-[#222222]
+        transition-colors
+    "
+>
+    <span className="!text-[#f5f5ee]">
+        Join waitlist
+    </span>
 
-                        <span className="!text-[#f5f5ee]">
-                            ↗
-                        </span>
-                    </a>
+    <span className="!text-[#f5f5ee]">
+        ↗
+    </span>
+</Link>
 
                 </div>
 

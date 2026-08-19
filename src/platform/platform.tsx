@@ -685,7 +685,7 @@
 //                 <div className="platform-home-logo">
 
 //                     <img
-//                         src="/logo_no.png"
+//                         src="/logo_nobg.png"
 //                         alt="Zientra"
 //                     />
 

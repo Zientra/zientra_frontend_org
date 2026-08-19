@@ -1,6 +1,6 @@
 import { motion, type Variants } from "framer-motion";
-import { useState } from 'react';
-import type { FormEvent } from "react";
+// import { useState } from 'react';
+// import type { FormEvent } from "react";
 
 
   const heroContainer: Variants = {
@@ -32,17 +32,17 @@ import type { FormEvent } from "react";
 
 const Hero = () => {
 
-    const [email, setEmail] = useState("");
-    const [submitted, setSubmitted] = useState(false);
+    // const [email, setEmail] = useState("");
+    // const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    // const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault();
 
-        if (!email.trim()) return;
+    //     if (!email.trim()) return;
 
-        setSubmitted(true);
-        setEmail("");
-    };
+    //     setSubmitted(true);
+    //     setEmail("");
+    // };
 
     return (
         <section className="hero">

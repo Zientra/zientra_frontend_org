@@ -3138,29 +3138,37 @@ ACCESSIBILITY
 }
 
 /* ============================================================
-   PLATFORM — DEVELOPMENT PAGE
+   EDITOR TEST — UNDER CONSTRUCTION
    ============================================================ */
 
-.platform-development {
+.editor-test-page {
     min-height: 100vh;
-    background: #f5f5ee;
-    color: #101010;
     display: flex;
     flex-direction: column;
-    font-family: inherit;
+
+    background: #f5f5ee;
+    color: #101010;
 }
 
-.platform-development-main {
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+
+.editor-test-main {
     flex: 1;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 80px 24px;
 }
 
-.platform-development-content {
+.editor-test-content {
     width: 100%;
     max-width: 680px;
+
     text-align: center;
 }
 
@@ -3169,7 +3177,7 @@ ACCESSIBILITY
    STATUS
    ============================================================ */
 
-.platform-development-status {
+.editor-test-status {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -3183,13 +3191,13 @@ ACCESSIBILITY
 
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
 
-    margin-bottom: 32px;
+    margin-bottom: 30px;
 }
 
-.platform-development-status-dot {
+.editor-test-status-dot {
     width: 6px;
     height: 6px;
 
@@ -3203,14 +3211,14 @@ ACCESSIBILITY
    LOGO
    ============================================================ */
 
-.platform-development-logo {
+.editor-test-logo {
     display: flex;
     justify-content: center;
 
-    margin-bottom: 28px;
+    margin-bottom: 26px;
 }
 
-.platform-development-logo img {
+.editor-test-logo img {
     width: 48px;
     height: 48px;
 
@@ -3222,19 +3230,19 @@ ACCESSIBILITY
    TITLE
    ============================================================ */
 
-.platform-development-title {
+.editor-test-title {
     margin: 0;
 
     color: #101010;
 
-    font-size: 56px;
+    font-size: 54px;
     font-weight: 500;
+    line-height: 1.06;
 
-    line-height: 1.05;
     letter-spacing: -0.045em;
 }
 
-.platform-development-title span {
+.editor-test-title span {
     color: #77776f;
 }
 
@@ -3243,37 +3251,37 @@ ACCESSIBILITY
    DESCRIPTION
    ============================================================ */
 
-.platform-development-description {
-    max-width: 560px;
+.editor-test-description {
+    max-width: 570px;
 
-    margin: 28px auto 0;
+    margin: 26px auto 0;
 
     color: #666660;
 
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.7;
 }
 
 
 /* ============================================================
-   STATUS CARD
+   INFO CARD
    ============================================================ */
 
-.platform-development-card {
-    max-width: 420px;
+.editor-test-info {
+    max-width: 430px;
 
-    margin: 40px auto 0;
+    margin: 36px auto 0;
     padding: 16px;
 
     text-align: left;
 
-    background: #f9f9f4;
+    background: #fafaf5;
 
     border: 1px solid #deded6;
     border-radius: 8px;
 }
 
-.platform-development-card-title {
+.editor-test-info-title {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -3284,9 +3292,9 @@ ACCESSIBILITY
     font-weight: 500;
 }
 
-.platform-development-card-dot {
-    width: 8px;
-    height: 8px;
+.editor-test-info-dot {
+    width: 7px;
+    height: 7px;
 
     flex-shrink: 0;
 
@@ -3295,7 +3303,7 @@ ACCESSIBILITY
     background: #77776f;
 }
 
-.platform-development-card-description {
+.editor-test-info p {
     margin: 8px 0 0;
 
     color: #77776f;
@@ -3309,17 +3317,18 @@ ACCESSIBILITY
    ACTIONS
    ============================================================ */
 
-.platform-development-actions {
+.editor-test-actions {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
 
-    margin-top: 32px;
+    gap: 10px;
+
+    margin-top: 30px;
 }
 
-.platform-development-primary,
-.platform-development-secondary {
+.editor-test-primary,
+.editor-test-secondary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -3330,7 +3339,7 @@ ACCESSIBILITY
 
     border-radius: 6px;
 
-    font-size: 14px;
+    font-size: 13px;
     text-decoration: none;
 
     transition:
@@ -3339,35 +3348,41 @@ ACCESSIBILITY
         color 0.2s ease;
 }
 
-.platform-development-primary {
+
+/* Primary */
+
+.editor-test-primary {
     background: #101010;
     color: #f5f5ee;
 
     font-weight: 500;
 }
 
-.platform-development-primary:hover {
+.editor-test-primary:hover {
     background: #292929;
 }
 
-.platform-development-secondary {
+
+/* Secondary */
+
+.editor-test-secondary {
     border: 1px solid #cfcfc7;
 
     color: #44443f;
 }
 
-.platform-development-secondary:hover {
+.editor-test-secondary:hover {
     border-color: #101010;
     color: #101010;
 }
 
 
 /* ============================================================
-   FOOTNOTE
+   NOTE
    ============================================================ */
 
-.platform-development-footnote {
-    margin: 28px 0 0;
+.editor-test-note {
+    margin: 24px 0 0;
 
     color: #999990;
 
@@ -3379,8 +3394,8 @@ ACCESSIBILITY
    FOOTER
    ============================================================ */
 
-.platform-development-footer {
-    padding: 24px;
+.editor-test-footer {
+    padding: 22px;
 
     text-align: center;
 
@@ -3391,30 +3406,31 @@ ACCESSIBILITY
 
 
 /* ============================================================
-   RESPONSIVE
+   MOBILE
    ============================================================ */
 
 @media (max-width: 640px) {
 
-    .platform-development-main {
+    .editor-test-main {
         padding: 60px 20px;
     }
 
-    .platform-development-title {
-        font-size: 42px;
+    .editor-test-title {
+        font-size: 40px;
     }
 
-    .platform-development-description {
+    .editor-test-description {
         font-size: 14px;
     }
 
-    .platform-development-actions {
+    .editor-test-actions {
         flex-direction: column;
     }
 
-    .platform-development-primary,
-    .platform-development-secondary {
+    .editor-test-primary,
+    .editor-test-secondary {
         width: 100%;
         max-width: 280px;
     }
+
 }

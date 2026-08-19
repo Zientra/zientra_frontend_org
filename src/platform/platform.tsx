@@ -1,658 +1,656 @@
-import { useEffect, useRef, useState } from "react";
-import CodeEditor from "./code_editor";
+// import { useEffect, useRef, useState } from "react";
+// import CodeEditor from "./code_editor";
 
-const WS_URL = "ws://localhost:8080";
+// const WS_URL = "ws://localhost:8080";
 
-export interface RoomUser {
-    user_id: string;
-    username: string;
-    display_name: string;
-}
+// export interface RoomUser {
+//     user_id: string;
+//     username: string;
+//     display_name: string;
+// }
 
-export interface ChatMessage {
-    message_id: string;
+// export interface ChatMessage {
+//     message_id: string;
 
-    room_id: string;
+//     room_id: string;
 
-    sender_id: string;
-    sender_username: string;
-    sender_display_name: string;
+//     sender_id: string;
+//     sender_username: string;
+//     sender_display_name: string;
 
-    content: string;
+//     content: string;
 
-    created_at: string;
-}
+//     created_at: string;
+// }
 
-export interface RoomState {
-    room_id: string;
-    join_code: string;
-    room_name: string;
-}
+// export interface RoomState {
+//     room_id: string;
+//     join_code: string;
+//     room_name: string;
+// }
 
-const Platform = () => {
+// const Platform = () => {
 
-    const socketRef = useRef<WebSocket | null>(null);
+//     const socketRef = useRef<WebSocket | null>(null);
 
-    const [username, setUsername] = useState("");
-    const [roomName, setRoomName] = useState("");
-    const [joinCode, setJoinCode] = useState("");
+//     const [username, setUsername] = useState("");
+//     const [roomName, setRoomName] = useState("");
+//     const [joinCode, setJoinCode] = useState("");
 
-    const [room, setRoom] = useState<RoomState | null>(null);
-    const [users, setUsers] = useState<RoomUser[]>([]);
+//     const [room, setRoom] = useState<RoomState | null>(null);
+//     const [users, setUsers] = useState<RoomUser[]>([]);
 
-    const [code, setCode] = useState("");
-    const [language, setLanguage] = useState("javascript");
+//     const [code, setCode] = useState("");
+//     const [language, setLanguage] = useState("javascript");
 
-    const [messages, setMessages] = useState<ChatMessage[]>([]);
+//     const [messages, setMessages] = useState<ChatMessage[]>([]);
 
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [connected, setConnected] = useState(false);
+//     const [error, setError] = useState("");
+//     const [loading, setLoading] = useState(false);
+//     const [connected, setConnected] = useState(false);
 
 
 
-    //CONNECT WEBSOCKET
+//     //CONNECT WEBSOCKET
 
-    const connectSocket = () => {
+//     const connectSocket = () => {
 
-        return new Promise<WebSocket>((resolve, reject) => {
+//         return new Promise<WebSocket>((resolve, reject) => {
 
-            console.log(
-                "[WS] Connecting to:",
-                WS_URL
-            );
+//             console.log(
+//                 "[WS] Connecting to:",
+//                 WS_URL
+//             );
 
-            const socket = new WebSocket(WS_URL);
+//             const socket = new WebSocket(WS_URL);
 
-            socketRef.current = socket;
+//             socketRef.current = socket;
 
 
 
-            // MESSAGE HANDLER
+//             // MESSAGE HANDLER
 
 
-            // Attach this BEFORE onopen so we cannot miss the
-            // backend's initial "connected" message.
-            //
+//             // Attach this BEFORE onopen so we cannot miss the
+//             // backend's initial "connected" message.
+//             //
 
-            socket.onmessage = handleMessage;
+//             socket.onmessage = handleMessage;
 
 
 
-            // OPEN
+//             // OPEN
 
 
-            socket.onopen = () => {
+//             socket.onopen = () => {
 
-                console.log(
-                    "[WS] WebSocket connected"
-                );
+//                 console.log(
+//                     "[WS] WebSocket connected"
+//                 );
 
-                setConnected(true);
+//                 setConnected(true);
 
-                resolve(socket);
+//                 resolve(socket);
 
-            };
+//             };
 
 
 
-            // ERROR
+//             // ERROR
 
 
-            socket.onerror = (event) => {
+//             socket.onerror = (event) => {
 
-                console.error(
-                    "[WS] WebSocket error:",
-                    event
-                );
+//                 console.error(
+//                     "[WS] WebSocket error:",
+//                     event
+//                 );
 
-                setConnected(false);
+//                 setConnected(false);
 
-                reject(
-                    new Error(
-                        "Could not connect to backend"
-                    )
-                );
+//                 reject(
+//                     new Error(
+//                         "Could not connect to backend"
+//                     )
+//                 );
 
-            };
+//             };
 
 
 
-            // CLOSE
+//             // CLOSE
 
 
-            socket.onclose = (event) => {
+//             socket.onclose = (event) => {
 
-                console.log(
-                    "[WS] WebSocket disconnected"
-                );
+//                 console.log(
+//                     "[WS] WebSocket disconnected"
+//                 );
 
-                console.log(
-                    "[WS] Close code:",
-                    event.code
-                );
+//                 console.log(
+//                     "[WS] Close code:",
+//                     event.code
+//                 );
 
-                console.log(
-                    "[WS] Close reason:",
-                    event.reason
-                );
+//                 console.log(
+//                     "[WS] Close reason:",
+//                     event.reason
+//                 );
 
-                console.log(
-                    "[WS] Clean:",
-                    event.wasClean
-                );
+//                 console.log(
+//                     "[WS] Clean:",
+//                     event.wasClean
+//                 );
 
-                setConnected(false);
+//                 setConnected(false);
 
-            };
+//             };
 
-        });
+//         });
 
-    };
+//     };
 
 
-    /*
-    CREATE ROOM
-    */
+//     /*
+//     CREATE ROOM
+//     */
 
-    const createRoom = async () => {
+//     const createRoom = async () => {
 
-        if (!username.trim()) {
+//         if (!username.trim()) {
 
-            setError("Enter your username");
+//             setError("Enter your username");
 
-            return;
-        }
+//             return;
+//         }
 
-        if (!roomName.trim()) {
+//         if (!roomName.trim()) {
 
-            setError("Enter a room name");
+//             setError("Enter a room name");
 
-            return;
-        }
+//             return;
+//         }
 
-        setError("");
-        setLoading(true);
+//         setError("");
+//         setLoading(true);
 
-        try {
+//         try {
 
-            const socket = await connectSocket();
+//             const socket = await connectSocket();
 
 
-            socket.send(
-                JSON.stringify({
-                    type: "create_room",
-                    room_name: roomName.trim()
-                })
-            );
+//             socket.send(
+//                 JSON.stringify({
+//                     type: "create_room",
+//                     room_name: roomName.trim()
+//                 })
+//             );
 
-        } catch {
+//         } catch {
 
-            setError(
-                "Could not connect to the backend"
-            );
+//             setError(
+//                 "Could not connect to the backend"
+//             );
 
-            setLoading(false);
-        }
-    };
+//             setLoading(false);
+//         }
+//     };
 
 
-    /*
-    JOIN ROOM
-    */
+//     /*
+//     JOIN ROOM
+//     */
 
-    const joinRoom = async () => {
+//     const joinRoom = async () => {
 
-        if (!username.trim()) {
+//         if (!username.trim()) {
 
-            setError("Enter your username");
+//             setError("Enter your username");
 
-            return;
-        }
+//             return;
+//         }
 
-        if (!joinCode.trim()) {
+//         if (!joinCode.trim()) {
 
-            setError("Enter a room code");
+//             setError("Enter a room code");
 
-            return;
-        }
+//             return;
+//         }
 
-        setError("");
-        setLoading(true);
+//         setError("");
+//         setLoading(true);
 
-        try {
+//         try {
 
-            const socket = await connectSocket();
+//             const socket = await connectSocket();
 
 
-            socket.send(
-                JSON.stringify({
-                    type: "join_room",
-                    join_code: joinCode
-                        .trim()
-                        .toUpperCase(),
+//             socket.send(
+//                 JSON.stringify({
+//                     type: "join_room",
+//                     join_code: joinCode
+//                         .trim()
+//                         .toUpperCase(),
 
-                    username: username.trim(),
+//                     username: username.trim(),
 
-                    display_name: username.trim()
-                })
-            );
+//                     display_name: username.trim()
+//                 })
+//             );
 
-        } catch {
+//         } catch {
 
-            setError(
-                "Could not connect to the backend"
-            );
+//             setError(
+//                 "Could not connect to the backend"
+//             );
 
-            setLoading(false);
-        }
-    };
+//             setLoading(false);
+//         }
+//     };
 
 
-    /*
-    HANDLE SERVER EVENTS
-    */
+//     /*
+//     HANDLE SERVER EVENTS
+//     */
 
-    const handleMessage = (
-        event: MessageEvent
-    ) => {
+//     const handleMessage = (
+//         event: MessageEvent
+//     ) => {
 
-        try {
+//         try {
 
-            const data = JSON.parse(
-                event.data
-            );
+//             const data = JSON.parse(
+//                 event.data
+//             );
 
-            console.log(
-                "SERVER:",
-                data
-            );
+//             console.log(
+//                 "SERVER:",
+//                 data
+//             );
 
 
-            /*
-            CONNECTION
-            */
+//             /*
+//             CONNECTION
+//             */
 
-            if (data.type === "connected") {
+//             if (data.type === "connected") {
 
-                console.log(
-                    "[WS] Server connection confirmed"
-                );
+//                 console.log(
+//                     "[WS] Server connection confirmed"
+//                 );
 
-                return;
-            }
+//                 return;
+//             }
 
 
-            /*
-            ROOM CREATED
-            */
+//             /*
+//             ROOM CREATED
+//             */
 
-            if (
-                data.type === "room_created"
-            ) {
+//             if (
+//                 data.type === "room_created"
+//             ) {
 
-                console.log(
-                    "Created room:",
-                    data.join_code
-                );
+//                 console.log(
+//                     "Created room:",
+//                     data.join_code
+//                 );
 
-                /*
-                The backend creates the room,
-                but doesn't add the creator.
+//                 /*
+//                 The backend creates the room,
+//                 but doesn't add the creator.
 
-                So immediately join it.
-                */
+//                 So immediately join it.
+//                 */
 
-                socketRef.current?.send(
-                    JSON.stringify({
-                        type: "join_room",
+//                 socketRef.current?.send(
+//                     JSON.stringify({
+//                         type: "join_room",
 
-                        join_code:
-                            data.join_code,
+//                         join_code:
+//                             data.join_code,
 
-                        username:
-                            username.trim(),
+//                         username:
+//                             username.trim(),
 
-                        display_name:
-                            username.trim()
-                    })
-                );
+//                         display_name:
+//                             username.trim()
+//                     })
+//                 );
 
-                return;
-            }
+//                 return;
+//             }
 
 
-            /*
-            ROOM STATE
-            */
+//             /*
+//             ROOM STATE
+//             */
 
-            if (
-                data.type === "room_state"
-            ) {
+//             if (
+//                 data.type === "room_state"
+//             ) {
 
-                setRoom({
-                    room_id:
-                        data.room.room_id,
+//                 setRoom({
+//                     room_id:
+//                         data.room.room_id,
 
-                    join_code:
-                        data.room.join_code,
+//                     join_code:
+//                         data.room.join_code,
 
-                    room_name:
-                        data.room.room_name
-                });
+//                     room_name:
+//                         data.room.room_name
+//                 });
 
-                setUsers(
-                    data.members ?? []
-                );
+//                 setUsers(
+//                     data.members ?? []
+//                 );
 
-                setCode(
-                    data.code?.content ?? ""
-                );
+//                 setCode(
+//                     data.code?.content ?? ""
+//                 );
 
-                setLanguage(
-                    data.code?.language ??
-                    "javascript"
-                );
+//                 setLanguage(
+//                     data.code?.language ??
+//                     "javascript"
+//                 );
 
-                return;
-            }
+//                 return;
+//             }
 
 
-            /*
-            JOIN SUCCESS
-            */
+//             /*
+//             JOIN SUCCESS
+//             */
 
-            if (
-                data.type ===
-                "join_room_success"
-            ) {
+//             if (
+//                 data.type ===
+//                 "join_room_success"
+//             ) {
 
-                setRoom({
-                    room_id:
-                        data.room_id,
+//                 setRoom({
+//                     room_id:
+//                         data.room_id,
 
-                    join_code:
-                        data.join_code,
+//                     join_code:
+//                         data.join_code,
 
-                    room_name:
-                        data.room_name
-                });
+//                     room_name:
+//                         data.room_name
+//                 });
 
-                setLoading(false);
+//                 setLoading(false);
 
-                return;
-            }
+//                 return;
+//             }
 
 
-            /*
-            USER JOINED
-            */
+//             /*
+//             USER JOINED
+//             */
 
-            if (
-                data.type ===
-                "user_joined"
-            ) {
+//             if (
+//                 data.type ===
+//                 "user_joined"
+//             ) {
 
-                setUsers(
-                    current => {
+//                 setUsers(
+//                     current => {
 
-                        const exists =
-                            current.some(
-                                user =>
-                                    user.user_id ===
-                                    data.user.user_id
-                            );
+//                         const exists =
+//                             current.some(
+//                                 user =>
+//                                     user.user_id ===
+//                                     data.user.user_id
+//                             );
 
-                        if (exists) {
-                            return current;
-                        }
+//                         if (exists) {
+//                             return current;
+//                         }
 
-                        return [
-                            ...current,
-                            data.user
-                        ];
-                    }
-                );
+//                         return [
+//                             ...current,
+//                             data.user
+//                         ];
+//                     }
+//                 );
 
-                return;
-            }
+//                 return;
+//             }
 
 
-            /*
-            USER LEFT
-            */
+//             /*
+//             USER LEFT
+//             */
 
-            if (
-                data.type ===
-                "user_left"
-            ) {
+//             if (
+//                 data.type ===
+//                 "user_left"
+//             ) {
 
-                setUsers(
-                    current =>
-                        current.filter(
-                            user =>
-                                user.user_id !==
-                                data.user.user_id
-                        )
-                );
+//                 setUsers(
+//                     current =>
+//                         current.filter(
+//                             user =>
+//                                 user.user_id !==
+//                                 data.user.user_id
+//                         )
+//                 );
 
-                return;
-            }
+//                 return;
+//             }
 
 
-            /*
-            CODE UPDATED
-            */
+//             /*
+//             CODE UPDATED
+//             */
 
-            if (
-                data.type ===
-                "code_updated"
-            ) {
+//             if (
+//                 data.type ===
+//                 "code_updated"
+//             ) {
 
-                setCode(
-                    data.code?.content ?? ""
-                );
+//                 setCode(
+//                     data.code?.content ?? ""
+//                 );
 
-                if (
-                    data.code?.language
-                ) {
+//                 if (
+//                     data.code?.language
+//                 ) {
 
-                    setLanguage(
-                        data.code.language
-                    );
-                }
+//                     setLanguage(
+//                         data.code.language
+//                     );
+//                 }
 
-                return;
-            }
+//                 return;
+//             }
 
 
-            /*
-            LANGUAGE CHANGED
-            */
+//             /*
+//             LANGUAGE CHANGED
+//             */
 
-            if (
-                data.type ===
-                "language_changed"
-            ) {
+//             if (
+//                 data.type ===
+//                 "language_changed"
+//             ) {
 
-                setLanguage(
-                    data.language
-                );
+//                 setLanguage(
+//                     data.language
+//                 );
 
-                return;
-            }
+//                 return;
+//             }
 
 
-            /*
-            CHAT MESSAGE
-            */
+//             /*
+//             CHAT MESSAGE
+//             */
 
-            if (data.type === "message") {
+//             if (data.type === "message") {
 
-                console.log(
-                    "CHAT MESSAGE RECEIVED:",
-                    data
-                );
+//                 console.log(
+//                     "CHAT MESSAGE RECEIVED:",
+//                     data
+//                 );
 
-                const incomingMessage: ChatMessage =
-                    data.content;
+//                 const incomingMessage: ChatMessage =
+//                     data.content;
 
-                setMessages(current => [
-                    ...current,
-                    incomingMessage
-                ]);
+//                 setMessages(current => [
+//                     ...current,
+//                     incomingMessage
+//                 ]);
 
-                return;
-            }
+//                 return;
+//             }
 
-            /*
-            ERROR
-            */
+//             /*
+//             ERROR
+//             */
 
-            if (
-                data.type ===
-                "error"
-            ) {
+//             if (
+//                 data.type ===
+//                 "error"
+//             ) {
 
-                setError(
-                    data.message
-                );
+//                 setError(
+//                     data.message
+//                 );
 
-                setLoading(false);
+//                 setLoading(false);
 
-                return;
-            }
+//                 return;
+//             }
 
-        } catch (err) {
+//         } catch (err) {
 
-            console.error(
-                "Invalid server message:",
-                err
-            );
-        }
-    };
+//             console.error(
+//                 "Invalid server message:",
+//                 err
+//             );
+//         }
+//     };
 
 
-    /*
-    SEND CODE
-    */
+//     /*
+//     SEND CODE
+//     */
 
-    const updateCode = (
-        newCode: string
-    ) => {
+//     const updateCode = (
+//         newCode: string
+//     ) => {
 
-        setCode(newCode);
+//         setCode(newCode);
 
-        if (
-            socketRef.current?.readyState ===
-            WebSocket.OPEN
-        ) {
+//         if (
+//             socketRef.current?.readyState ===
+//             WebSocket.OPEN
+//         ) {
 
-            socketRef.current.send(
-                JSON.stringify({
-                    type: "update_code",
-                    content: newCode
-                })
-            );
-        }
-    };
+//             socketRef.current.send(
+//                 JSON.stringify({
+//                     type: "update_code",
+//                     content: newCode
+//                 })
+//             );
+//         }
+//     };
 
 
-    /*
-    CHANGE LANGUAGE
-    */
+//     /*
+//     CHANGE LANGUAGE
+//     */
 
-    const changeLanguage = (
-        newLanguage: string
-    ) => {
+//     const changeLanguage = (
+//         newLanguage: string
+//     ) => {
 
-        setLanguage(newLanguage);
+//         setLanguage(newLanguage);
 
-        if (
-            socketRef.current?.readyState ===
-            WebSocket.OPEN
-        ) {
+//         if (
+//             socketRef.current?.readyState ===
+//             WebSocket.OPEN
+//         ) {
 
-            socketRef.current.send(
-                JSON.stringify({
-                    type: "change_language",
-                    language: newLanguage
-                })
-            );
-        }
-    };
+//             socketRef.current.send(
+//                 JSON.stringify({
+//                     type: "change_language",
+//                     language: newLanguage
+//                 })
+//             );
+//         }
+//     };
 
 
-    /*
-    SEND CHAT
-    */
+//     /*
+//     SEND CHAT
+//     */
 
-    const sendMessage = (
-        content: string
-    ) => {
+//     const sendMessage = (
+//         content: string
+//     ) => {
 
-        if (!content.trim()) {
-            return;
-        }
+//         if (!content.trim()) {
+//             return;
+//         }
 
-        if (
-            socketRef.current?.readyState !==
-            WebSocket.OPEN
-        ) {
-            return;
-        }
+//         if (
+//             socketRef.current?.readyState !==
+//             WebSocket.OPEN
+//         ) {
+//             return;
+//         }
 
-        socketRef.current.send(
-            JSON.stringify({
-                type: "send_message",
-                content: content.trim()
-            })
-        );
-    };
+//         socketRef.current.send(
+//             JSON.stringify({
+//                 type: "send_message",
+//                 content: content.trim()
+//             })
+//         );
+//     };
 
 
-    /*
-    LEAVE ROOM
-    */
+//     /*
+//     LEAVE ROOM
+//     */
 
-    const leaveRoom = () => {
+//     const leaveRoom = () => {
 
-        socketRef.current?.close();
+//         socketRef.current?.close();
 
-        socketRef.current = null;
+//         socketRef.current = null;
 
-        setRoom(null);
-        setUsers([]);
-        setMessages([]);
-        setCode("");
-        setLanguage("javascript");
+//         setRoom(null);
+//         setUsers([]);
+//         setMessages([]);
+//         setCode("");
+//         setLanguage("javascript");
 
-        setConnected(false);
+//         setConnected(false);
 
-        setLoading(false);
-    };
+//         setLoading(false);
+//     };
 
 
-    /*
-    CLEANUP
-    */
+//     /*
+//     CLEANUP
+//     */
 
-    useEffect(() => {
+//     useEffect(() => {
 
-        return () => {
+//         return () => {
 
-            socketRef.current?.close();
+//             socketRef.current?.close();
 
-        };
+//         };
 
-    }, []);
+//     }, []);
 
 
-
-    // /editor-test UI
-    /*
-    PLATFORM UI
-    */
+//     /*
+//     PLATFORM UI
+//     */
 
 //     if (room) {
 
@@ -837,139 +835,95 @@ const Platform = () => {
 // export default Platform;
 
 
+import Nav from "../components/nav";
 
-    // currently in development UI for users
-/*
-============================================================
-PLATFORM — CURRENTLY IN DEVELOPMENT
-============================================================
-*/
+const platform = () => {
+    return (
+        <div className="editor-test-page">
 
-return (
-    <div className="platform-development">
+            <Nav />
 
-        <main className="platform-development-main">
+            <main className="editor-test-main">
 
-            <div className="platform-development-content">
+                <div className="editor-test-content">
 
-                {/* STATUS */}
-
-                <div className="platform-development-status">
-
-                    <span className="platform-development-status-dot" />
-
-                    Currently in development
-
-                </div>
+                    <div className="editor-test-status">
+                        <span className="editor-test-status-dot" />
+                        Currently in development
+                    </div>
 
 
-                {/* LOGO */}
-
-                <div className="platform-development-logo">
-
-                    <img
-                        src="/logo_nobg.png"
-                        alt="Zientra"
-                    />
-
-                </div>
+                    <div className="editor-test-logo">
+                        <img
+                            src="/logo_nobg.png"
+                            alt="Zientra"
+                        />
+                    </div>
 
 
-                {/* TITLE */}
-
-                <h1 className="platform-development-title">
-
-                    We're building
-                    <br />
-
-                    <span>
-                        something better.
-                    </span>
-
-                </h1>
+                    <h1 className="editor-test-title">
+                        The workspace is
+                        <br />
+                        <span>being built.</span>
+                    </h1>
 
 
-                {/* DESCRIPTION */}
-
-                <p className="platform-development-description">
-
-                    The Zientra collaborative development workspace
-                    is currently under active development. We're
-                    building a place where developers and AI agents
-                    can work together in the same environment.
-
-                </p>
+                    <p className="editor-test-description">
+                        We're currently building Zientra's collaborative
+                        development workspace where developers and AI
+                        agents can work together in real time.
+                    </p>
 
 
-                {/* PRODUCT STATUS */}
+                    <div className="editor-test-info">
 
-                <div className="platform-development-card">
+                        <div className="editor-test-info-title">
+                            <span className="editor-test-info-dot" />
+                            Editor access is not available yet
+                        </div>
 
-                    <div className="platform-development-card-title">
-
-                        <span className="platform-development-card-dot" />
-
-                        Platform access is temporarily closed
+                        <p>
+                            We're testing and refining the workspace
+                            before opening it to early users.
+                        </p>
 
                     </div>
 
 
-                    <p className="platform-development-card-description">
+                    <div className="editor-test-actions">
 
-                        We're polishing the workspace before opening
-                        it to early users.
+                        <a
+                            href="/waitlist"
+                            className="editor-test-primary"
+                        >
+                            Join the waitlist
+                        </a>
 
+                        <a
+                            href="/"
+                            className="editor-test-secondary"
+                        >
+                            Back to Zientra
+                        </a>
+
+                    </div>
+
+
+                    <p className="editor-test-note">
+                        Early access will be available soon.
                     </p>
 
                 </div>
 
-
-                {/* CTA */}
-
-                <div className="platform-development-actions">
-
-                    <a
-                        href="/waitlist"
-                        className="platform-development-primary"
-                    >
-                        Join the waitlist
-                    </a>
+            </main>
 
 
-                    <a
-                        href="/"
-                        className="platform-development-secondary"
-                    >
-                        Back to Zientra
-                    </a>
+            <footer className="editor-test-footer">
+                © {new Date().getFullYear()} Zientra
+            </footer>
 
-                </div>
-
-
-                {/* FOOTNOTE */}
-
-                <p className="platform-development-footnote">
-
-                    Early access will be available to waitlist members.
-
-                </p>
-
-            </div>
-
-        </main>
-
-
-        {/* FOOTER */}
-
-        <footer className="platform-development-footer">
-
-            © {new Date().getFullYear()} Zientra
-
-        </footer>
-
-    </div>
-);
-
+        </div>
+    );
 };
 
-export default Platform;
+export default platform;

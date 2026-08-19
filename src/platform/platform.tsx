@@ -648,188 +648,328 @@ const Platform = () => {
     }, []);
 
 
+
+    // /editor-test UI
     /*
     PLATFORM UI
     */
 
-    if (room) {
+//     if (room) {
 
-        return (
-            <CodeEditor
-                room={room}
-                users={users}
-                code={code}
-                language={language}
-                messages={messages}
-                connected={connected}
-                onCodeChange={updateCode}
-                onLanguageChange={changeLanguage}
-                onSendMessage={sendMessage}
-                onLeaveRoom={leaveRoom}
-            />
-        );
-    }
-    /*
-    HOME
-    */
+//         return (
+//             <CodeEditor
+//                 room={room}
+//                 users={users}
+//                 code={code}
+//                 language={language}
+//                 messages={messages}
+//                 connected={connected}
+//                 onCodeChange={updateCode}
+//                 onLanguageChange={changeLanguage}
+//                 onSendMessage={sendMessage}
+//                 onLeaveRoom={leaveRoom}
+//             />
+//         );
+//     }
+//     /*
+//     HOME
+//     */
 
-    return (
-        <div className="platform-home">
+//     return (
+//         <div className="platform-home">
 
-            <div className="platform-home-card">
+//             <div className="platform-home-card">
 
-                {/* 
-                LOGO
-              */}
+//                 {/* 
+//                 LOGO
+//               */}
 
-                <div className="platform-home-logo">
+//                 <div className="platform-home-logo">
+
+//                     <img
+//                         src="/logo_no.png"
+//                         alt="Zientra"
+//                     />
+
+//                     <span>
+//                         zientra
+//                     </span>
+
+//                 </div>
+
+
+//                 {/* 
+//                 TITLE
+//                 */}
+
+//                 <h1 className="platform-home-title">
+//                     Enter workspace
+//                 </h1>
+
+
+//                 <p className="platform-home-description">
+//                     Create a workspace or join an existing one.
+//                 </p>
+
+
+//                 {/* 
+//                 CREATE WORKSPACE
+//                */}
+
+//                 <label className="platform-form-label">
+//                     Username
+//                 </label>
+
+//                 <input
+//                     value={username}
+//                     onChange={(e) => {
+//                         setUsername(e.target.value);
+//                     }}
+//                     placeholder="sahil"
+//                     className="platform-form-input"
+//                 />
+
+
+//                 <label className="platform-form-label">
+//                     Workspace name
+//                 </label>
+
+//                 <input
+//                     value={roomName}
+//                     onChange={(e) => {
+//                         setRoomName(e.target.value);
+//                     }}
+//                     placeholder="My Project"
+//                     className="platform-form-input"
+//                 />
+
+
+//                 <button
+//                     type="button"
+//                     onClick={createRoom}
+//                     disabled={loading}
+//                     className="platform-primary-button"
+//                 >
+//                     {loading
+//                         ? "Creating..."
+//                         : "Create workspace"
+//                     }
+//                 </button>
+
+
+//                 {/* 
+//                 DIVIDER
+//                 */}
+
+//                 <div className="platform-divider">
+
+//                     <div className="platform-divider-line" />
+
+//                     <span className="platform-divider-text">
+//                         OR
+//                     </span>
+
+//                     <div className="platform-divider-line" />
+
+//                 </div>
+
+
+//                 {/* 
+//                 JOIN WORKSPACE
+//                 */}
+
+//                 <input
+//                     value={username}
+//                     onChange={(e) => {
+//                         setUsername(e.target.value);
+//                     }}
+//                     placeholder="sahil"
+//                     className="platform-form-input"
+//                 />
+
+
+//                 <label className="platform-form-label">
+//                     Join code
+//                 </label>
+
+//                 <input
+//                     value={joinCode}
+//                     onChange={(e) => {
+//                         setJoinCode(
+//                             e.target.value.toUpperCase()
+//                         );
+//                     }}
+//                     placeholder="ABC123"
+//                     maxLength={6}
+//                     className="platform-form-input"
+//                 />
+
+
+//                 <button
+//                     type="button"
+//                     onClick={joinRoom}
+//                     disabled={loading}
+//                     className="platform-secondary-button"
+//                 >
+//                     {loading
+//                         ? "Joining..."
+//                         : "Join workspace"
+//                     }
+//                 </button>
+
+
+//                 {/* 
+//                 ERROR
+//                  */}
+
+//                 {error && (
+//                     <p className="platform-error">
+//                         {error}
+//                     </p>
+//                 )}
+
+//             </div>
+
+//         </div>
+//     );
+// };
+
+// export default Platform;
+
+
+
+    // currently in development UI for users
+/*
+============================================================
+PLATFORM — CURRENTLY IN DEVELOPMENT
+============================================================
+*/
+
+return (
+    <div className="platform-development">
+
+        <main className="platform-development-main">
+
+            <div className="platform-development-content">
+
+                {/* STATUS */}
+
+                <div className="platform-development-status">
+
+                    <span className="platform-development-status-dot" />
+
+                    Currently in development
+
+                </div>
+
+
+                {/* LOGO */}
+
+                <div className="platform-development-logo">
 
                     <img
                         src="/logo_nobg.png"
                         alt="Zientra"
                     />
 
-                    <span>
-                        zientra
-                    </span>
-
                 </div>
 
 
-                {/* 
-                TITLE
-                */}
+                {/* TITLE */}
 
-                <h1 className="platform-home-title">
-                    Enter workspace
+                <h1 className="platform-development-title">
+
+                    We're building
+                    <br />
+
+                    <span>
+                        something better.
+                    </span>
+
                 </h1>
 
 
-                <p className="platform-home-description">
-                    Create a workspace or join an existing one.
+                {/* DESCRIPTION */}
+
+                <p className="platform-development-description">
+
+                    The Zientra collaborative development workspace
+                    is currently under active development. We're
+                    building a place where developers and AI agents
+                    can work together in the same environment.
+
                 </p>
 
 
-                {/* 
-                CREATE WORKSPACE
-               */}
+                {/* PRODUCT STATUS */}
 
-                <label className="platform-form-label">
-                    Username
-                </label>
+                <div className="platform-development-card">
 
-                <input
-                    value={username}
-                    onChange={(e) => {
-                        setUsername(e.target.value);
-                    }}
-                    placeholder="sahil"
-                    className="platform-form-input"
-                />
+                    <div className="platform-development-card-title">
+
+                        <span className="platform-development-card-dot" />
+
+                        Platform access is temporarily closed
+
+                    </div>
 
 
-                <label className="platform-form-label">
-                    Workspace name
-                </label>
+                    <p className="platform-development-card-description">
 
-                <input
-                    value={roomName}
-                    onChange={(e) => {
-                        setRoomName(e.target.value);
-                    }}
-                    placeholder="My Project"
-                    className="platform-form-input"
-                />
+                        We're polishing the workspace before opening
+                        it to early users.
 
-
-                <button
-                    type="button"
-                    onClick={createRoom}
-                    disabled={loading}
-                    className="platform-primary-button"
-                >
-                    {loading
-                        ? "Creating..."
-                        : "Create workspace"
-                    }
-                </button>
-
-
-                {/* 
-                DIVIDER
-                */}
-
-                <div className="platform-divider">
-
-                    <div className="platform-divider-line" />
-
-                    <span className="platform-divider-text">
-                        OR
-                    </span>
-
-                    <div className="platform-divider-line" />
+                    </p>
 
                 </div>
 
 
-                {/* 
-                JOIN WORKSPACE
-                */}
+                {/* CTA */}
 
-                <input
-                    value={username}
-                    onChange={(e) => {
-                        setUsername(e.target.value);
-                    }}
-                    placeholder="sahil"
-                    className="platform-form-input"
-                />
+                <div className="platform-development-actions">
+
+                    <a
+                        href="/waitlist"
+                        className="platform-development-primary"
+                    >
+                        Join the waitlist
+                    </a>
 
 
-                <label className="platform-form-label">
-                    Join code
-                </label>
+                    <a
+                        href="/"
+                        className="platform-development-secondary"
+                    >
+                        Back to Zientra
+                    </a>
 
-                <input
-                    value={joinCode}
-                    onChange={(e) => {
-                        setJoinCode(
-                            e.target.value.toUpperCase()
-                        );
-                    }}
-                    placeholder="ABC123"
-                    maxLength={6}
-                    className="platform-form-input"
-                />
+                </div>
 
 
-                <button
-                    type="button"
-                    onClick={joinRoom}
-                    disabled={loading}
-                    className="platform-secondary-button"
-                >
-                    {loading
-                        ? "Joining..."
-                        : "Join workspace"
-                    }
-                </button>
+                {/* FOOTNOTE */}
 
+                <p className="platform-development-footnote">
 
-                {/* 
-                ERROR
-                 */}
+                    Early access will be available to waitlist members.
 
-                {error && (
-                    <p className="platform-error">
-                        {error}
-                    </p>
-                )}
+                </p>
 
             </div>
 
-        </div>
-    );
+        </main>
+
+
+        {/* FOOTER */}
+
+        <footer className="platform-development-footer">
+
+            © {new Date().getFullYear()} Zientra
+
+        </footer>
+
+    </div>
+);
+
 };
 
 export default Platform;

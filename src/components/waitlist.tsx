@@ -16,15 +16,23 @@ export default function WaitlistPage() {
         <Waitlist
   appearance={{
     variables: {
-      colorPrimary: "#101010",
-      colorBackground: "#ffffff", // Controls card background
-      colorInputText: "#101010",
-      colorText: "#101010",
-      colorTextSecondary: "#666660",
-      colorNeutral: "#e5e5dd",
-      borderRadius: "6px",
-      fontSize: "14px",
-    },
+  colorPrimary: "#101010",
+  colorBackground: "#ffffff",
+
+  // Current Clerk variable names
+  colorInput: "#fcfcf9",
+  colorInputForeground: "#101010",
+
+  colorForeground: "#101010",
+  colorMutedForeground: "#666660",
+
+  colorNeutral: "#e5e5dd",
+  colorBorder: "#d8d8d0",
+  colorRing: "#101010",
+
+  borderRadius: "6px",
+  fontSize: "14px",
+},
     elements: {
       /* CARD CONTAINERS */
       cardBox: "shadow-xl shadow-black/[0.04] rounded-xl overflow-hidden",

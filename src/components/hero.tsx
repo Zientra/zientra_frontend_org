@@ -2,6 +2,7 @@ import { motion, type Variants } from "framer-motion";
 import { useState } from 'react';
 import type { FormEvent } from "react";
 
+
   const heroContainer: Variants = {
       hidden: {},
 
@@ -92,7 +93,7 @@ const Hero = () => {
 
                         </motion.p>
 
-
+{/* 
                         <motion.form
                             className="waitlist"
                             id="waitlist"
@@ -154,7 +155,39 @@ const Hero = () => {
 
                             </motion.button>
 
-                        </motion.form>
+                        </motion.form> */}
+
+                        <a
+                    href="/waitlist"
+                    className="
+                        hidden
+                        md:flex
+                        items-center
+                        gap-1 sm:gap-2
+                        px-3
+                        lg:px-4
+                        py-2
+                        lg:py-2.5
+                        border
+                        border-[#111111]
+                        rounded
+                        text-[#111111]
+                        text-[11px]
+                        lg:text-[14px]
+                        font-medium
+                        whitespace-nowrap
+                        hover:bg-[#111111]
+                        hover:text-[#f5f5ee]
+                        transition-colors
+                        shrink-0
+                    "
+                >
+                    Join waitlist
+
+                    <span className="text-xs lg:text-sm">
+                        ↗
+                    </span>
+                </a>
 
 
                         <motion.p

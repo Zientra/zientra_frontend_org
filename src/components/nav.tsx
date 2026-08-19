@@ -101,7 +101,7 @@ const Nav = () => {
 
                 {/* Desktop CTA */}
                 <a
-                    href="/#waitlist"
+                    href="/waitlist"
                     className="
                         hidden
                         md:flex

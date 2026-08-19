@@ -11,6 +11,7 @@ import About from "./components/about";
 import Contact from "./components/contact"
 import WhyZientra from "./components/whyzientra";
 import Platform from "./platform/platform";
+import Waitlist from "./components/waitlist";
 
 function App() {
 
@@ -46,6 +47,10 @@ function App() {
                     element={<Platform />}
                 />
 
+                <Route 
+                    path="/waitlist"
+                    element={<Waitlist />}
+                />
 
             </Routes>
 

@@ -349,10 +349,6 @@ const Home = () => {
                         GitHub
                     </a>
 
-                    <a href="#">
-                        X
-                    </a>
-
                     <Link to="/contact">
                         Contact
                     </Link>

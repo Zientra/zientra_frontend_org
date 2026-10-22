@@ -549,9 +549,9 @@ const About = () => {
                                 Sahil Adit
                             </h3>
 
-                            <span>
+                            {/* <span>
                                 Co-Founder
-                            </span>
+                            </span> */}
 
                             <p>
                                 Building the product, engineering
@@ -580,9 +580,9 @@ const About = () => {
                                 Shivraj Patil
                             </h3>
 
-                            <span>
+                            {/* <span>
                                 Co-Founder
-                            </span>
+                            </span> */}
 
                             <p>
                                 Building Zientra alongside the team
@@ -657,12 +657,8 @@ const About = () => {
 
                 <div className="footer-links">
 
-                    <a href="#">
+                    <a href="https://github.com/Zientra">
                         GitHub
-                    </a>
-
-                    <a href="#">
-                        X
                     </a>
 
                     <Link to="/contact">

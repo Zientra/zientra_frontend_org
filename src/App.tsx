@@ -12,6 +12,8 @@ import Contact from "./components/contact"
 import WhyZientra from "./components/whyzientra";
 import Platform from "./platform/platform";
 import Waitlist from "./components/waitlist";
+import PricingPage from "./components/pricing";
+
 
 function App() {
 
@@ -41,11 +43,7 @@ function App() {
                 />
 
 
-                // Testing editor
-                <Route
-                    path="/editor-test"
-                    element={<Platform />}
-                />
+                <Route path="/pricing" element={<PricingPage />} />
 
                 <Route 
                     path="/waitlist"

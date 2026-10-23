@@ -51,7 +51,19 @@ const featureGroups: FeatureGroup[] = [
         ],
     },
     {
-        title: "AI teammates",
+        title: "Meet Your AI Teammates",
+        features: [
+            { name: "@coder - Develops features and refactors in your style", free: true, pro: true },
+            { name: "@debugger - Finds root causes from errors and terminal", free: true, pro: true },
+            { name: "@reviewer - Flags defects and style drifts, proposes fixes", free: true, pro: true },
+            { name: "@architect - Plans structure and module boundaries before you build", free: false, pro: true },
+            { name: "@tester - Writes unit tests that match your conventions", free: false, pro: true },
+            { name: "@security - Audits code for vulnerabilities and unsafe patterns", free: false, pro: true },
+            { name: "@docs - Writes docs and comments in your voice", free: false, pro: true },
+        ],
+    },
+    {
+        title: "AI Agents",
         features: [
             { name: "Access to prebuilt agents", free: true, pro: true },
             { name: "Custom AI agents", free: false, pro: true },
@@ -372,8 +384,9 @@ const Pricing = () => {
                         GitHub
                     </a>
 
-                    <a href="#">X</a>
-
+                    {/* <a href="#">X</a> */}
+                    <Link to="/terms">Terms</Link>
+                    <Link to="/privacy">Privacy</Link>
                     <Link to="/contact">Contact</Link>
                 </div>
             </footer>

@@ -84,6 +84,20 @@ const Nav = () => {
                     </Link>
 
                     <Link
+                        to="/pricing"
+                        className="
+                          text-[#74746d]
+                          hover:text-[#111111]
+                            text-[12px]
+                            lg:text-[14px]
+                            whitespace-nowrap
+                            transition-colors
+                        "
+                    >
+                        Pricing
+                    </Link>
+
+                    <Link
                         to="/about"
                         className="
                             text-[#74746d]
@@ -265,6 +279,22 @@ const Nav = () => {
                         Why Zientra?
                     </Link>
 
+                    <Link
+                        to="/pricing"
+                        onClick={closeMenu}
+                        className="
+                            py-5
+                            border-b
+                          border-[#d9d9d0]
+                            font-['Manrope']
+                            text-[36px]
+                            tracking-[-0.05em]
+                          text-[#111111]
+                        "
+                    >
+                        Pricing
+                    </Link>
+
 
                     <Link
                         to="/about"
@@ -284,9 +314,9 @@ const Nav = () => {
 
 
                     <Link
-    to="/waitlist"
-    onClick={closeMenu}
-    className="
+                        to="/waitlist"
+                        onClick={closeMenu}
+                        className="
         mt-10
         w-fit
         flex
@@ -302,15 +332,15 @@ const Nav = () => {
         hover:bg-[#222222]
         transition-colors
     "
->
-    <span className="!text-[#f5f5ee]">
-        Join waitlist
-    </span>
+                    >
+                        <span className="!text-[#f5f5ee]">
+                            Join waitlist
+                        </span>
 
-    <span className="!text-[#f5f5ee]">
-        ↗
-    </span>
-</Link>
+                        <span className="!text-[#f5f5ee]">
+                            ↗
+                        </span>
+                    </Link>
 
                 </div>
 

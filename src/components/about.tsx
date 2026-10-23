@@ -661,6 +661,8 @@ const About = () => {
                         GitHub
                     </a>
 
+                    <Link to="/terms">Terms</Link>
+                    <Link to="/privacy">Privacy</Link>
                     <Link to="/contact">
                         Contact
                     </Link>

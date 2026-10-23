@@ -6,6 +6,8 @@ import {
     Route
 } from "react-router-dom";
 
+import Terms from "./components/terms";
+import Privacy from "./components/privacy";
 import Home from "./components/home";
 import About from "./components/about";
 import Contact from "./components/contact"
@@ -42,11 +44,24 @@ function App() {
                 />
 
 
-                <Route path="/pricing" element={<PricingPage />} />
+                <Route 
+                    path="/pricing" 
+                    element={<PricingPage />} 
+                />
 
                 <Route 
                     path="/waitlist"
                     element={<Waitlist />}
+                />
+
+                <Route 
+                    path="/terms" 
+                    element={<Terms />} 
+                />
+
+                <Route 
+                    path="/privacy" 
+                    element={<Privacy />} 
                 />
 
             </Routes>

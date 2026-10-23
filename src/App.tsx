@@ -14,6 +14,7 @@ import Contact from "./components/contact"
 import WhyZientra from "./components/whyzientra";
 import Waitlist from "./components/waitlist";
 import PricingPage from "./components/pricing";
+import Download from "./components/download";
 
 
 function App() {
@@ -62,6 +63,11 @@ function App() {
                 <Route 
                     path="/privacy" 
                     element={<Privacy />} 
+                />
+
+                <Route 
+                    path="/download"
+                    element={<Download />}
                 />
 
             </Routes>

@@ -366,7 +366,7 @@ const Pricing = () => {
                         teammates into one place.
                     </p>
 
-                    <Link to="/signup" className="pricing-closing-button">
+                    <Link to="/download" className="pricing-closing-button">
                         Start building <span>→</span>
                     </Link>
                 </motion.section>
@@ -377,7 +377,7 @@ const Pricing = () => {
 
                 <div className="footer-links">
                     <a
-                        href="https://github.com/Zientra/zientra_frontend_org"
+                        href="https://github.com/Zientra"
                         target="_blank"
                         rel="noreferrer"
                     >

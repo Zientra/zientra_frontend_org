@@ -96,7 +96,7 @@ const Home = () => {
     <div className="workspace-images">
 
     <motion.img
-        src="/code_editor.png"
+        src="/zientra_2.png"
         alt="Zientra collaborative editor"
         className="workspace-image workspace-image-one"
         initial={{
@@ -117,7 +117,7 @@ const Home = () => {
     />
 
     <motion.img
-        src="/room_join.png"
+        src="/zientra_1.png"
         alt="Zientra workspace"
         className="workspace-image workspace-image-two"
         initial={{
@@ -307,7 +307,7 @@ const Home = () => {
 
 
                     <motion.a
-                        href="#waitlist"
+                        href="/download"
                         className="final-button"
 
                         whileHover={{
@@ -319,7 +319,7 @@ const Home = () => {
                         }}
                     >
 
-                        Join the waitlist
+                        Download Now
 
                         <motion.span
                             whileHover={{
@@ -337,24 +337,22 @@ const Home = () => {
 
 
             <footer>
-
-                <div>
-                    © 2026 Zientra
-                </div>
-
+                <div>© 2026 Zientra</div>
 
                 <div className="footer-links">
-
-                    <a href="https://github.com/sahiladit/zientra" target="_blank">
+                    <a
+                        href="https://github.com/Zientra"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         GitHub
                     </a>
 
-                    <Link to="/contact">
-                        Contact
-                    </Link>
-
+                    {/* <a href="#">X</a> */}
+                    <Link to="/terms">Terms</Link>
+                    <Link to="/privacy">Privacy</Link>
+                    <Link to="/contact">Contact</Link>
                 </div>
-
             </footer>
 
         </div>

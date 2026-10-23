@@ -157,7 +157,7 @@ const Hero = () => {
                         </motion.form> */}
 
                         <Link
-    to="/waitlist"
+    to="/download"
     className="
         flex
         items-center
@@ -176,22 +176,13 @@ const Hero = () => {
         transition-colors
     "
 >
-    Join waitlist
+    Dowload Pre-release
 
     <span>
         ↗
     </span>
 </Link>
 
-
-                        <motion.p
-                            className="waitlist-note"
-                            variants={heroItem}
-                        >
-
-                            Early access · No spam
-
-                        </motion.p>
 
                     </motion.div>
 

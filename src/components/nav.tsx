@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {ArrowDownToLine} from "lucide-react";
 
 const Nav = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -114,7 +115,7 @@ const Nav = () => {
 
 
                 {/* Desktop CTA */}
-                <Link
+                {/* <Link
                     to="/waitlist"
                     className="
                         hidden
@@ -144,6 +145,35 @@ const Nav = () => {
                     <span className="text-xs lg:text-sm">
                         ↗
                     </span>
+                </Link> */}
+
+                <Link 
+                    to="/download"
+                    className="
+                        hidden
+                        md:flex
+                        items-center
+                        gap-1 sm:gap-2
+                        px-3
+                        lg:px-4
+                        py-2
+                        lg:py-2.5
+                        border
+                        border-[#111111]
+                        rounded
+                        text-[#111111]
+                        text-[11px]
+                        lg:text-[14px]
+                        font-medium
+                        whitespace-nowrap
+                        hover:bg-[#111111]
+                        hover:text-[#f5f5ee]
+                        transition-colors
+                        shrink-0
+                    "
+                >  
+                    Download 
+                    <ArrowDownToLine />
                 </Link>
 
 

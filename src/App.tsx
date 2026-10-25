@@ -12,7 +12,6 @@ import Home from "./components/home";
 import About from "./components/about";
 import Contact from "./components/contact"
 import WhyZientra from "./components/whyzientra";
-import Waitlist from "./components/waitlist";
 import PricingPage from "./components/pricing";
 import Download from "./components/download";
 
@@ -48,11 +47,6 @@ function App() {
                 <Route 
                     path="/pricing" 
                     element={<PricingPage />} 
-                />
-
-                <Route 
-                    path="/waitlist"
-                    element={<Waitlist />}
                 />
 
                 <Route 

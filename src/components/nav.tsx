@@ -344,7 +344,7 @@ const Nav = () => {
 
 
                     <Link
-                        to="/waitlist"
+                        to="/download"
                         onClick={closeMenu}
                         className="
         mt-10
@@ -364,7 +364,7 @@ const Nav = () => {
     "
                     >
                         <span className="!text-[#f5f5ee]">
-                            Join waitlist
+                            Download
                         </span>
 
                         <span className="!text-[#f5f5ee]">
